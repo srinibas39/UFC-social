@@ -7,7 +7,7 @@ export const InputText = () => {
             <img src={require("../../images/Conor.png")} alt="user" />
 
             <div className="input-text-text">
-                <input />
+                <input placeholder="Type here to post" />
                 <div className="input-text-option">
                     <div>
                         <span class="material-symbols-outlined">

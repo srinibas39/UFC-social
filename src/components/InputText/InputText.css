@@ -59,7 +59,7 @@
   cursor: pointer;
 }
 
-.input-text-option div:hover {
+.input-text-option div span:hover {
     color: var(--primary-color2);
     
   }

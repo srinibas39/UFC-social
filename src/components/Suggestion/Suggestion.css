@@ -1,0 +1,39 @@
+.suggestion-container {
+  display: flex;
+  padding: 1rem;
+  width: 40rem;
+  box-shadow: var(--box-shadow2);
+  margin: auto;
+  margin-top: 1rem;
+  justify-content: space-evenly;
+}
+
+.suggestion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: var(--box-shadow3);
+}
+
+.suggestion img {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow3);
+  padding-top: 6px;
+  margin-bottom: 1rem;
+}
+.suggestion button{
+    width: 5rem;
+    border: none;
+    height: 2rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.suggestion button:hover{
+    background-color: var(--primary-color2);
+}
