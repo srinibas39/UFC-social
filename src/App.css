@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  font-family:var(--primary-font-family) ;
 }
 :root {
   --primary-color: #d20a0a;
@@ -13,4 +14,5 @@
   --footer-color: #18181b;
   --box-shadow1: 0px 0px 10px 2px #aaa;
   --box-shadow2: 0px 0px 0 0.5px #aaa;
+  --box-shadow3: 0px 0px 0 0.5px var(--primary-color);
 }
