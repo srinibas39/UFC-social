@@ -2,6 +2,7 @@ import { AutoComplete } from "../components/AutoComplete/AutoComplete"
 import { Home } from "../components/Home/Home"
 import { InputText } from "../components/InputText/InputText"
 import { Navbar } from "../components/NavBar/NavBar"
+import { Profile } from "../components/Profile/Profile"
 import { Suggestion } from "../components/Suggestion/Suggestion"
 import { UserPost } from "../components/UserPost/UserPost"
 
@@ -10,9 +11,10 @@ export const HomePage = () => {
         <Navbar />
         <AutoComplete />
         {/* <Home /> */}
-        <InputText />
+        {/* <InputText />
         <Suggestion />
-        <UserPost />
+        <UserPost /> */}
+        <Profile/>
 
 
     </>

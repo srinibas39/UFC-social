@@ -20,6 +20,9 @@ export const UserPost = () => {
                 <span class="material-symbols-outlined">
                     share
                 </span>
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
             </div>
         </div>
 
