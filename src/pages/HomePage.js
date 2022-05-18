@@ -12,10 +12,10 @@ export const HomePage = () => {
         <Navbar />
         <AutoComplete />
         {/* <Home /> */}
-        <InputText />
+        {/* <InputText />
         <Suggestion />
-        <UserPost />
-        {/* <Profile/> */}
+        <UserPost /> */}
+        <Profile/>
         {/* <EditProfile /> */}
 
 
