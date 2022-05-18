@@ -8,19 +8,19 @@ export const UserPost = () => {
             <small>Tue May 17 2022 11:02:05 AM</small>
             <p>Adarsh Ballika Tue May 17 2022 11:02:05 AM</p>
             <div>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     favorite
                 </span>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     chat_bubble
                 </span>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     bookmark
                 </span>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     share
                 </span>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     delete
                 </span>
             </div>

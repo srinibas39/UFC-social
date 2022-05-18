@@ -6,7 +6,7 @@ export const EditProfile = ({ show , setShow}) => {
       {
        show && <div className="edit-profile-container"onClick={()=>setShow(false)}>
           <div className="edit-profile" onClick={(e)=>e.stopPropagation()}>
-            <span class="material-symbols-outlined" onClick={()=>setShow(false)}>close</span>
+            <span className="material-symbols-outlined" onClick={()=>setShow(false)}>close</span>
 
             <div className="avatar">
               <h3>Avatar</h3>

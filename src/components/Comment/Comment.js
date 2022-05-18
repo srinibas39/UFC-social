@@ -10,13 +10,13 @@ export const Comment = () => {
                 <h3>Srinibas khuntia</h3>
                 <p>Hello my name is srinibas khuntia</p>
                 <div>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         reply
                     </span>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         edit
                     </span>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         delete
                     </span>
                 </div>
@@ -30,13 +30,13 @@ export const Comment = () => {
                     <h3>Srinibas khuntia</h3>
                     <p>Hello my name is srinibas khuntia</p>
                     <div>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             reply
                         </span>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             edit
                         </span>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             delete
                         </span>
                     </div>

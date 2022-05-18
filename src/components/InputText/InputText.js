@@ -10,13 +10,13 @@ export const InputText = () => {
                 <textarea placeholder="Type here to post" />
                 <div className="input-text-option">
                     <div>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             image
                         </span>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             gif
                         </span>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             mood
                         </span>
 
