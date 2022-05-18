@@ -1,0 +1,10 @@
+
+.comment-text-container{
+    padding: 1rem;
+    width: 40rem;
+    margin: auto;
+    box-shadow: var(--box-shadow2);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+}
