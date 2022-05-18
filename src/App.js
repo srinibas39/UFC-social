@@ -4,6 +4,8 @@ import { CommentPage } from "./pages/CommentPage";
 import { ExplorePage } from "./pages/ExplorePage";
 import { HomePage } from "./pages/HomePage";
 import { ProfilePage } from "./pages/ProfilePage";
+import { SignupPage } from "./pages/SignupPage";
+import { LoginPage } from "./pages/LoginPage";
 
 export const App = () => {
   return <Routes>
@@ -12,10 +14,8 @@ export const App = () => {
     <Route path="/profile" element={<ProfilePage />} />
     <Route path="/explore" element={<ExplorePage />} />
     <Route path="/comment" element={<CommentPage />} />
-
-
-
-
+    <Route path="/login" element={<LoginPage />} />
+    <Route path="/signup" element={<SignupPage />} />
 
   </Routes>
 
