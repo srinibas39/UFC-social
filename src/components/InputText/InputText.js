@@ -7,7 +7,7 @@ export const InputText = () => {
             <img src={require("../../images/Conor.png")} alt="user" />
 
             <div className="input-text-text">
-                <input placeholder="Type here to post" />
+                <textarea placeholder="Type here to post" />
                 <div className="input-text-option">
                     <div>
                         <span class="material-symbols-outlined">
@@ -19,6 +19,7 @@ export const InputText = () => {
                         <span class="material-symbols-outlined">
                             mood
                         </span>
+
                     </div>
                     <button>POST</button>
                 </div>

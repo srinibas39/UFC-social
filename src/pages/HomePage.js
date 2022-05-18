@@ -1,4 +1,5 @@
 import { AutoComplete } from "../components/AutoComplete/AutoComplete"
+import { EditProfile } from "../components/EditProfile/EditProfile"
 import { Home } from "../components/Home/Home"
 import { InputText } from "../components/InputText/InputText"
 import { Navbar } from "../components/NavBar/NavBar"
@@ -11,10 +12,11 @@ export const HomePage = () => {
         <Navbar />
         <AutoComplete />
         {/* <Home /> */}
-        {/* <InputText />
+        <InputText />
         <Suggestion />
-        <UserPost /> */}
-        <Profile/>
+        <UserPost />
+        {/* <Profile/> */}
+        {/* <EditProfile /> */}
 
 
     </>
