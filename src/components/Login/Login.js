@@ -1,22 +1,26 @@
 import { useLocation, useNavigate } from "react-router-dom"
- import { useState, useEffect } from "react";
-// import { useAuth } from "../../context/AuthContext/AuthContext";
+import { useState, useEffect } from "react";
+
 import "./Login.css";
+import { useDispatch, useSelector } from "react-redux";
+import { loadLogin } from "../../features/authSlice";
 
 export const Login = () => {
     const navigate = useNavigate();
     const [form, setForm] = useState({
-        email: "", password: ""
+        username: "", password: ""
     })
+    
+    const { loading, token, user, error } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    // console.log((loginData));
+    const handleSubmit = () => {
 
-
-    // const { handleLogin, loggedIn, token } = useAuth();
-    const location = useLocation();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // handleLogin(form.email, form.password);
+        // handleLogin(form.username, form.password);
         // navigate("/products");
+
+        dispatch(loadLogin({ username: form.username, password: form.password }))
+
     }
 
     // useEffect(() => {
@@ -26,7 +30,7 @@ export const Login = () => {
     // }, [loggedIn])
 
     const handleGuest = () => {
-        setForm({ ...form, email: "adarshbalika@gmail.com", password: "adarshbalika" })
+        setForm({ ...form, username: "adarshbalika@gmail.com", password: "adarshBalika" })
     }
 
     return <div className="login-container">
@@ -34,8 +38,8 @@ export const Login = () => {
             <h2>Login</h2>
 
             <div className="email-container">
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                <label htmlFor="email">username</label>
+                <input type="email" name="username" value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} />
             </div>
             <div className="password-container">
                 <label htmlFor="password">Password</label>
@@ -48,7 +52,7 @@ export const Login = () => {
                 </div>
                 <a href="#">Forgot Your Password ?</a>
             </div>
-            <button className="btn-logins" onClick={(e) => handleSubmit(e)} >Login</button>
+            <button className="btn-logins" onClick={() => handleSubmit()} >Login</button>
             <button onClick={() => handleGuest()}>Login as a Guest</button>
             <div className="create-new" onClick={() => navigate("/signup")}>
                 <p>Create new Account</p>

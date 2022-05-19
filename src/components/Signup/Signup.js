@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
-// import { useAuth } from "../../context/AuthContext/AuthContext";
+
 import "./Signup.css"
+import { useDispatch } from "react-redux";
+import { loadSignup } from "../../features/authSlice";
 
 export const Signup = () => {
     const navigate = useNavigate();
@@ -9,12 +11,15 @@ export const Signup = () => {
     const [form, setForm] = useState({
         firstName: "",
         lastName: "",
-        email: "",
+        username: "",
         password: ""
     });
-    // const { handleSignup } = useAuth();
+
+
+    const dispatch = useDispatch();
+
     const handleSubmit = () => {
-        // handleSignup(form.firstName, form.lastName, form.email, form.password)
+        dispatch(loadSignup(form))
     }
     return <div className="signup-container">
         <div className="signup">
@@ -28,8 +33,8 @@ export const Signup = () => {
                 <input type="text" name="lastname" value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
             </div>
             <div className="email-container">
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                <label htmlFor="email">Username</label>
+                <input type="email" name="username" value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} />
             </div>
             <div className="password-container">
                 <label htmlFor="password">Password</label>
