@@ -9,13 +9,13 @@ const initialState = {
 }
 
 export const loadPosts = createAsyncThunk("posts/loadPosts",
-    async ({ auth, post },thunkAPI) => {
+    async ({ token, postData }, thunkAPI) => {
         try {
-            const res = await AddPost({ auth, post });
+            const res = await AddPost({ token, postData });
             return res.data;
         }
-        catch(err) {
-            return thunkAPI.rejectWithValue(err)
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
         }
     })
 
@@ -24,17 +24,17 @@ export const postsSlice = createSlice({
     name: "posts",
     initialState,
     extraReducers: {
-      [loadPosts.pending]:(state)=>{
-          state.loading=true;
-      },
-      [loadPosts.fulfilled]:(state,action)=>{
-          state.loading=false;
-          state.posts=action.payload
-      },
-      [loadPosts.rejected]:(state,action)=>{
-          state.loading=false;
-          state.error=action.payload
-      }
+        [loadPosts.pending]: (state) => {
+            state.loading = true;
+        },
+        [loadPosts.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.posts = action.payload
+        },
+        [loadPosts.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload
+        }
     }
 })
 

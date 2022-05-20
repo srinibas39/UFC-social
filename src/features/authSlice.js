@@ -16,7 +16,7 @@ export const loadLogin = createAsyncThunk("auth/loadLogin",
             return res.data;
         }
         catch (err) {
-            return thunkAPI.rejectWithValue(err);
+            return thunkAPI.rejectWithValue(err.message);
         }
     })
 export const loadSignup = createAsyncThunk("auth/loadSignup",

@@ -1,9 +1,9 @@
 import axios from "axios"
 
 
-export const AddPost = async ({ token, post }) => {
+export const AddPost = async ({ token, postData }) => {
     return axios.post("/api/posts",
-        { post },
+        { postData },
         {
             headers: {
                 authorization: token
