@@ -17,22 +17,21 @@
   width: 3rem;
   border-radius: 50%;
   margin-right: 10px;
-  box-shadow: var(--box-shadow3);
   padding-top: 6px;
 }
 
 .input-text-text {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
-.input-text-text textarea {
-  height: 60%;
+.input-text-text input {
+  height: 20%;
   padding: 1rem;
   width: 100%;
   outline: none;
   border: none;
-  box-shadow: var(--box-shadow3);
 }
 
 .input-text-option {
@@ -52,14 +51,68 @@
 }
 .input-text-option button:hover {
   background-color: var(--primary-color2);
- 
 }
-.input-text-option div {
+.input-text-option-div {
+  position: relative;
+}
+.input-text-option div span {
   color: var(--primary-color);
   cursor: pointer;
+  margin: 0px 5px;
 }
 
 .input-text-option div span:hover {
-    color: var(--primary-color2);
-    
-  }
+  color: var(--primary-color2);
+}
+
+.emoji-box {
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary-color);
+  position: absolute;
+  top: -16px;
+  left: 64px;
+  width: 10rem;
+  height: 13rem;
+  font-size: 1.3rem;
+  box-shadow: var(--box-shadow3);
+  padding: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--primary-color);
+  /* display: none; */
+}
+.emoji-box div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  cursor: pointer;
+}
+
+.input-text-text-div {
+  height: 74%;
+  padding: 1rem;
+  width: 100%;
+  outline: none;
+  border: none;
+  box-shadow: var(--box-shadow3);
+}
+
+#input-img {
+  border-radius: 0;
+  height: 9rem;
+  width: 10rem;
+  position: absolute;
+  left: 34px;
+  background-color: var(--secondary-color);
+  top: 48px;
+  padding-top: 0px;
+}
+
+.cross{
+    position: absolute;
+    left: 192px;
+    top: 42px;
+    color: var(--primary-color);
+    cursor: pointer;
+}

@@ -16,6 +16,9 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    emoji: "",
+    image: "",
+    gif: "",
     username: "adarshbalika",
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -49,6 +52,9 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    emoji: "",
+    image: "",
+    gif: "",
     username: "shubhamsoni",
 
     comments: [

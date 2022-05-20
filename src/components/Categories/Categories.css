@@ -1,0 +1,25 @@
+.categories {
+  display: flex;
+  padding: 1rem;
+  width: 40rem;
+  box-shadow: var(--box-shadow2);
+  margin: auto;
+  margin-top: 1rem;
+  justify-content: space-evenly;
+  color: var(--primary-color);
+}
+
+.categories h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.categories h3:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primary-color2);
+}
