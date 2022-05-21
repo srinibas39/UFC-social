@@ -30,6 +30,9 @@ export const InputText = () => {
                     image: imageData
                 }
             }))
+            setImageData(null);
+            setEmoji("");
+            setpost("");
         }
     }
 

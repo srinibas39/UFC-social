@@ -15,8 +15,5 @@ export const ExplorePage = () => {
         <Suggestion />
         <Categories />
         <UserPost />
-        <UserPost />
-        <UserPost />
-        <UserPost />
     </>
 }
