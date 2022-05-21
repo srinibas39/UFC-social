@@ -1,17 +1,19 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { loadAllPosts } from "../../features/postsSlice"
+import { likePostHandler } from "../../backend/controllers/PostController"
+import { loadAllPosts, loadLike } from "../../features/postsSlice"
 import "./UserPost.css"
 
 export const UserPost = () => {
 
     const dispatch = useDispatch();
     const { posts, status } = useSelector((state) => state.posts);
-    const { user } = useSelector((state) => state.auth)
+    const { user, token } = useSelector((state) => state.auth)
 
     useEffect(() => {
-        if (status === "idle")
+        if (status === "idle") {
             dispatch(loadAllPosts());
+        }
     }, [dispatch, status])
 
     return <>
@@ -20,7 +22,7 @@ export const UserPost = () => {
                 return <div className="user-post-container" key={post._id}>
                     <img src={require("../../images/Conor.png")} alt="user" />
                     <div>
-                        <h3>{user.firstName+" "+user.lastName}</h3>
+                        <h3>{user.firstName + " " + user.lastName}</h3>
                         <small>{Date(post.createdAt)}</small>
                         <p>{post.content}</p>
                         {
@@ -28,8 +30,20 @@ export const UserPost = () => {
                         }
 
                         <div>
-                            <span className="material-symbols-outlined">
-                                favorite
+                            {
+                                post.likes.likeCount > 0 ? <span class="material-symbols-rounded like-text like" >
+                                    thumb_up <span style={{ fontSize: "1rem" }}>{post.likes.likeCount}</span>
+                                </span> :
+                                    <span class="material-symbols-outlined" onClick={() => dispatch(loadLike({ token, id: post._id }))}>
+                                        thumb_up
+                                    </span>
+
+                            }
+
+                            {/* <span class="material-symbols-outlined">thumb_down</span> */}
+
+                            <span class="material-symbols-outlined">
+                                thumb_down
                             </span>
                             <span className="material-symbols-outlined">
                                 chat_bubble

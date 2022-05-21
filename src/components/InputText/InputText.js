@@ -23,7 +23,7 @@ export const InputText = () => {
     }
 
     const handlePost = () => {
-        if (post !== "") {
+        if (post !== "" || imageData) {
             dispatch(loadPosts({
                 token: token, postData: {
                     content: post,
