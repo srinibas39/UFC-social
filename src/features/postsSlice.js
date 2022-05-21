@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice , current } from "@reduxjs/toolkit"
 import { AddPost } from "../services/AddPost"
+import { DislikePost } from "../services/DislikePost";
 import { GetAllPosts } from "../services/GetAllPosts";
 import { LikePost } from "../services/LikePost";
 
@@ -8,9 +9,13 @@ const initialState = {
     posts: [],
     loading: false,
     error: null,
-    status: "idle"
+    status: "idle",
+    dPosts: []
 
 }
+
+
+
 
 export const loadPosts = createAsyncThunk("posts/loadPosts",
     async ({ token, postData }, thunkAPI) => {
@@ -45,9 +50,35 @@ export const loadLike = createAsyncThunk("posts/loadLike",
         }
     })
 
+export const loadDislike = createAsyncThunk("posts/loadDislike",
+    async ({ token, id }, thunkAPI) => {
+        try {
+            const res = await DislikePost({ token, id });
+            return res.data;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
+        }
+    })
+
 export const postsSlice = createSlice({
     name: "posts",
     initialState,
+    reducers: {
+        dislikePosts: (state, action) => {
+            if (action.payload.type === "like") {
+                const id=state.dPosts.find((postId) => postId === action.payload.id);
+                state.dPosts.pop(id)
+
+            }
+            else {
+
+                state.dPosts.push(action.payload.id)
+            }
+            console.log(current(state.dPosts));
+
+        }
+    },
     extraReducers: {
         [loadPosts.pending]: (state) => {
             state.loading = true;
@@ -84,11 +115,22 @@ export const postsSlice = createSlice({
         [loadLike.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [loadDislike.pending]: (state) => {
+            state.loading = true;
+        },
+        [loadDislike.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.posts = action.payload;
+        },
+        [loadDislike.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         }
 
     }
 })
 
-
+export const { dislikePosts } = postsSlice.actions;
 
 export default postsSlice.reducer;
