@@ -15,7 +15,7 @@ export const App = () => {
     <Route path="/" element={<HomePage />} />
     <Route path="/profile" element={<ProfilePage />} />
     <Route path="/explore" element={<ExplorePage />} />
-    <Route path="/comment" element={<CommentPage />} />
+    <Route path="/comment/:postId" element={<CommentPage />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/signup" element={<SignupPage />} />
 

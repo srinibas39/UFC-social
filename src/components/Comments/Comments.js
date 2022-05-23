@@ -1,10 +1,52 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom"
+import { findPost, loadAllPosts, loadComments } from "../../features/postsSlice";
 import { Comment } from "../Comment/Comment"
-import { UserPost } from "../UserPost/UserPost"
+import { CommentText } from "../CommentText/CommentText";
+import { SinglePost } from "../SinglePost/SinglePost";
+
+
 
 
 export const Comments = () => {
+    const { postId } = useParams();
+
+    const dispatch = useDispatch();
+    const { post, status, comments } = useSelector((state) => state.posts);
+
+
+
+    useEffect(() => {
+        if (status === "idle") {
+            dispatch(loadAllPosts());
+
+        }
+    }, [dispatch, status])
+
+
+    useEffect(() => {
+        const timer = setTimeout(() => dispatch(findPost(postId)), 500);
+
+        return () => clearTimeout(timer);
+    }, [])
+
+    useEffect(() => {
+        dispatch(loadComments(postId))
+    }, [])
+
+
+
     return <div className="comments-container">
-        <UserPost />
-        <Comment/>
+        {
+            post && <SinglePost post={post} />
+        }
+        {
+            comments.comments && comments.comments.map((el) => {
+                return <Comment el={el} key={el._id} />
+            })
+        }
+        <CommentText postId={postId} />
+
     </div>
 }

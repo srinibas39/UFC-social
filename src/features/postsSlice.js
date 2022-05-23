@@ -1,7 +1,9 @@
-import { createAsyncThunk, createSlice , current } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit"
+import { AddComment } from "../services/AddComment";
 import { AddPost } from "../services/AddPost"
 import { DislikePost } from "../services/DislikePost";
 import { GetAllPosts } from "../services/GetAllPosts";
+import { GetComment } from "../services/GetComment";
 import { LikePost } from "../services/LikePost";
 
 
@@ -10,7 +12,9 @@ const initialState = {
     loading: false,
     error: null,
     status: "idle",
-    dPosts: []
+    dPosts: [],
+    post: null,
+    comments: []
 
 }
 
@@ -61,13 +65,36 @@ export const loadDislike = createAsyncThunk("posts/loadDislike",
         }
     })
 
+export const loadComments = createAsyncThunk("posts/loadComments",
+    async (postId, thunkAPI) => {
+        try {
+            const res = await GetComment(postId);
+            return res.data;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
+        }
+    })
+export const addComment = createAsyncThunk("posts/addComment",
+    async ({ postId, commentData, token }, thunkAPI) => {
+        try {
+            const res = await AddComment({ postId, commentData, token });
+            return res.data
+        }
+        catch (err) {
+            thunkAPI.rejectWithValue(err.message)
+        }
+
+    })
+
+
 export const postsSlice = createSlice({
     name: "posts",
     initialState,
     reducers: {
         dislikePosts: (state, action) => {
             if (action.payload.type === "like") {
-                const id=state.dPosts.find((postId) => postId === action.payload.id);
+                const id = state.dPosts.find((postId) => postId === action.payload.id);
                 state.dPosts.pop(id)
 
             }
@@ -75,8 +102,9 @@ export const postsSlice = createSlice({
 
                 state.dPosts.push(action.payload.id)
             }
-            console.log(current(state.dPosts));
-
+        },
+        findPost: (state, action) => {
+            state.post = state.posts.posts.find((el) => el._id === action.payload);
         }
     },
     extraReducers: {
@@ -126,11 +154,33 @@ export const postsSlice = createSlice({
         [loadDislike.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [loadComments.pending]: (state) => {
+            state.loading = true;
+        },
+        [loadComments.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.comments = action.payload;
+        },
+        [loadComments.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        [addComment.pending]: (state) => {
+            state.loading = true;
+        },
+        [addComment.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.comments = action.payload;
+        },
+        [addComment.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         }
 
     }
 })
 
-export const { dislikePosts } = postsSlice.actions;
+export const { dislikePosts, findPost } = postsSlice.actions;
 
 export default postsSlice.reducer;
