@@ -30,6 +30,7 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
+        children:[]
       },
       {
         _id: "5d3ef9d4-6a56-4dae-a155-3b4a7554242c",
@@ -39,6 +40,7 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
+        children:[]
       },
     ],
   },
@@ -64,6 +66,7 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
+        children:[]
       },
       {
         _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
@@ -73,6 +76,7 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
+        children:[]
       },
     ],
     createdAt: formatDate(),

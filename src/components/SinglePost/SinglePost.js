@@ -15,7 +15,8 @@ export const SinglePost = ({ post }) => {
     return <div className="user-post-container">
         <img src={require("../../images/Conor.png")} alt="user" />
         <div>
-            <h3>{user.firstName + " " + user.lastName}</h3>
+            {/* {user.firstName + " " + user.lastName} */}
+            <h3>{post.username}</h3>
             <small>{Date(post.createdAt)}</small>
             <p>{post.content}</p>
             {

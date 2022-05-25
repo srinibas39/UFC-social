@@ -42,8 +42,8 @@ export const Comments = () => {
             post && <SinglePost post={post} />
         }
         {
-            comments.comments && comments.comments.map((el) => {
-                return <Comment el={el} key={el._id} />
+            comments.comments && comments.comments.map((comment) => {
+                return <Comment comment={comment} key={comment._id} postId={postId} />
             })
         }
         <CommentText postId={postId} />

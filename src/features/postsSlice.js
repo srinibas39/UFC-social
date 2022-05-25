@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit"
 import { AddComment } from "../services/AddComment";
 import { AddPost } from "../services/AddPost"
 import { DislikePost } from "../services/DislikePost";
+import { EditComment } from "../services/EditComment";
 import { GetAllPosts } from "../services/GetAllPosts";
 import { GetComment } from "../services/GetComment";
 import { LikePost } from "../services/LikePost";
@@ -14,7 +15,8 @@ const initialState = {
     status: "idle",
     dPosts: [],
     post: null,
-    comments: []
+    comments: [],
+    reply: []
 
 }
 
@@ -87,6 +89,17 @@ export const addComment = createAsyncThunk("posts/addComment",
 
     })
 
+export const editComment = createAsyncThunk("posts/editComment",
+    async ({ postId, commentId, commentData, token }, thunkAPI) => {
+        try {
+            const res = await EditComment({ postId, commentId, commentData, token })
+            return res.data;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
+        }
+    })
+
 
 export const postsSlice = createSlice({
     name: "posts",
@@ -105,7 +118,8 @@ export const postsSlice = createSlice({
         },
         findPost: (state, action) => {
             state.post = state.posts.posts.find((el) => el._id === action.payload);
-        }
+        },
+       
     },
     extraReducers: {
         [loadPosts.pending]: (state) => {
@@ -176,11 +190,23 @@ export const postsSlice = createSlice({
         [addComment.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [editComment.pending]: (state) => {
+            state.loading = true;
+        },
+        [editComment.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.comments = action.payload;
+        },
+        [editComment.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         }
+
 
     }
 })
 
-export const { dislikePosts, findPost } = postsSlice.actions;
+export const { dislikePosts, findPost, replyComment } = postsSlice.actions;
 
 export default postsSlice.reducer;

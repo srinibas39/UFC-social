@@ -1,0 +1,7 @@
+.reply{
+    color:var(--primary-color);
+    cursor: pointer;
+}
+.reply:hover{
+  text-decoration: underline;
+}

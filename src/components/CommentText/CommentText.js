@@ -8,6 +8,7 @@ export const CommentText = ({ postId }) => {
     const [text, setText] = useState("");
     const dispatch = useDispatch();
     const { token } = useSelector((state) => state.auth);
+    
     const handleComment = () => {
         dispatch(addComment({ postId, commentData: { text }, token }));
         setText("");
@@ -21,18 +22,6 @@ export const CommentText = ({ postId }) => {
                 <input placeholder="Type here to post" value={text}
                     onChange={(e) => setText(e.target.value)} />
                 <div className="input-text-option">
-                    <div>
-                        <span className="material-symbols-outlined">
-                            image
-                        </span>
-                        <span className="material-symbols-outlined">
-                            gif
-                        </span>
-                        <span className="material-symbols-outlined">
-                            mood
-                        </span>
-
-                    </div>
                     <div className="comment-text-buttons">
                         <button onClick={handleComment}>POST</button>
                         <button style={{ marginLeft: "10px" }}>CANCEL</button>
