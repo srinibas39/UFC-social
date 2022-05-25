@@ -27,7 +27,8 @@ export const InputText = () => {
             dispatch(loadPosts({
                 token: token, postData: {
                     content: post,
-                    image: imageData
+                    image: imageData,
+                    comments:[]
                 }
             }))
             setImageData(null);
