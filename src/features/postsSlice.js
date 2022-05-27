@@ -5,6 +5,7 @@ import { DislikePost } from "../services/DislikePost";
 import { EditComment } from "../services/EditComment";
 import { GetAllPosts } from "../services/GetAllPosts";
 import { GetComment } from "../services/GetComment";
+import { GetSinglePost } from "../services/GetSinglePost";
 import { LikePost } from "../services/LikePost";
 
 
@@ -16,6 +17,7 @@ const initialState = {
     dPosts: [],
     post: null,
     comments: [],
+    
 }
 
 
@@ -97,6 +99,16 @@ export const editComment = createAsyncThunk("posts/editComment",
             return thunkAPI.rejectWithValue(err.message)
         }
     })
+export const getSinglePost = createAsyncThunk("posts/getSinglePost",
+    async (postId, thunkAPI) => {
+        try {
+            const res = await GetSinglePost(postId);
+            return res.data;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
+        }
+    })
 
 
 export const postsSlice = createSlice({
@@ -114,10 +126,7 @@ export const postsSlice = createSlice({
                 state.dPosts.push(action.payload.id)
             }
         },
-        findPost: (state, action) => {
-            state.post = state.posts.posts.find((el) => el._id === action.payload);
-        },
-       
+
     },
     extraReducers: {
         [loadPosts.pending]: (state) => {
@@ -200,12 +209,24 @@ export const postsSlice = createSlice({
         [editComment.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [getSinglePost.pending]: (state) => {
+            state.loading = true;
+        },
+        [getSinglePost.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.post=action.payload
+          
+        },
+        [getSinglePost.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload
         }
 
 
     }
 })
 
-export const { dislikePosts, findPost, replyComment } = postsSlice.actions;
+export const { dislikePosts,replyComment } = postsSlice.actions;
 
 export default postsSlice.reducer;

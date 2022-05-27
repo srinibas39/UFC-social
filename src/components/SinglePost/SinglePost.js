@@ -8,14 +8,14 @@ import { dislikePosts, loadAllPosts, loadDislike, loadLike } from "../../feature
 export const SinglePost = ({ post }) => {
 
     const dispatch = useDispatch();
-    const { posts, status, dPosts } = useSelector((state) => state.posts);
-    const { user, token } = useSelector((state) => state.auth);
+    const { dPosts } = useSelector((state) => state.posts);
+    const { token } = useSelector((state) => state.auth);
     const navigate = useNavigate();
 
     return <div className="user-post-container">
         <img src={require("../../images/Conor.png")} alt="user" />
         <div>
-            {/* {user.firstName + " " + user.lastName} */}
+            
             <h3>{post.username}</h3>
             <small>{Date(post.createdAt)}</small>
             <p>{post.content}</p>
