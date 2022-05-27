@@ -8,9 +8,9 @@ export const CommentText = ({ postId }) => {
     const [text, setText] = useState("");
     const dispatch = useDispatch();
     const { token } = useSelector((state) => state.auth);
-    
+
     const handleComment = () => {
-        dispatch(addComment({ postId, commentData: { text }, token }));
+        dispatch(addComment({ postId, commentData: { text, children: [] }, token }));
         setText("");
     }
     return <div className="comment-text-container">

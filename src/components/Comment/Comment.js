@@ -9,7 +9,7 @@ export const Comment = ({ comment, postId }) => {
 
 
     const nestedComment = (comment.children || []).map((com) => {
-        return <div className="comment-container" style={{display: "flex", marginLeft: "4rem" }}>
+        return <div className="comment-container" key={com._id} style={{display: "flex", marginLeft: "4rem" }}>
             <div className="comment">
                 <img src={require("../../images/Conor.png")} alt="user" />
                 <div className="comment-text">

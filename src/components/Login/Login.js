@@ -30,7 +30,7 @@ export const Login = () => {
     // }, [loggedIn])
 
     const handleGuest = () => {
-        setForm({ ...form, username: "adarshbalika@gmail.com", password: "adarshBalika" })
+        setForm({ ...form, username: "srinibas khuntia", password: "srinibaskhuntia123" })
     }
 
     return <div className="login-container">

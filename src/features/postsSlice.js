@@ -17,7 +17,7 @@ const initialState = {
     dPosts: [],
     post: null,
     comments: [],
-    
+
 }
 
 
@@ -193,7 +193,7 @@ export const postsSlice = createSlice({
         [addComment.fulfilled]: (state, action) => {
             state.loading = false;
             state.comments = action.payload;
-            console.log(action.payload);
+            
         },
         [addComment.rejected]: (state, action) => {
             state.loading = false;

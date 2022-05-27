@@ -1,18 +1,20 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { addComment, editComment, replyComment } from "../../features/postsSlice";
+import { v4 as uuid } from "uuid";
 import "./ReplyText.css"
 export const ReplyText = ({ setReply, postId, commentId }) => {
     const [replyText, setReplyText] = useState("");
     const dispatch = useDispatch();
     const { comments } = useSelector((state) => state.posts)
-    const { token } = useSelector((state) => state.auth)
+    const { token, user } = useSelector((state) => state.auth)
+
 
     const handleReply = () => {
         let commentReply = comments.comments
         for (let i = 0; i < commentReply.length; i++) {
             if (commentReply[i]._id === commentId) {
-                const commentChild = [{ ...commentReply[i], text: replyText }];
+                const commentChild = [...commentReply[i].children, { ...commentReply[i], text: replyText, username: user.username, _id: uuid() }];
                 dispatch(editComment({ postId, commentId, commentData: { children: commentChild }, token }));
 
             }
