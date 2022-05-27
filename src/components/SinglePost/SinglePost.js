@@ -1,8 +1,8 @@
-import { useEffect } from "react"
+
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { likePostHandler } from "../../backend/controllers/PostController"
-import { dislikePosts, loadAllPosts, loadDislike, loadLike } from "../../features/postsSlice"
+import { deletePost, dislikePosts, loadDislike, loadLike } from "../../features/postsSlice"
+
 
 
 export const SinglePost = ({ post }) => {
@@ -15,7 +15,7 @@ export const SinglePost = ({ post }) => {
     return <div className="user-post-container">
         <img src={require("../../images/Conor.png")} alt="user" />
         <div>
-            
+
             <h3>{post.username}</h3>
             <small>{Date(post.createdAt)}</small>
             <p>{post.content}</p>
@@ -52,7 +52,7 @@ export const SinglePost = ({ post }) => {
                 <span className="material-symbols-outlined">
                     share
                 </span>
-                <span className="material-symbols-outlined">
+                <span className="material-symbols-outlined" onClick={() => dispatch(deletePost({ postId: post._id, token: token }))}>
                     delete
                 </span>
             </div>
