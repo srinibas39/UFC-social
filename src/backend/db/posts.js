@@ -82,4 +82,5 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
+  
 ];

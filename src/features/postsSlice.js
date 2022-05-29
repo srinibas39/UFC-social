@@ -21,7 +21,8 @@ const initialState = {
     comments: [],
     postInput: "",
     imgInput: "",
-    editPost: null
+    editPost: null,
+    sort: ""
 
 }
 
@@ -160,6 +161,9 @@ export const postsSlice = createSlice({
         },
         setEditPost: (state, action) => {
             state.editPost = action.payload;
+        },
+        setSort: (state, action) => {
+            state.sort = action.payload;
         }
 
     },
@@ -282,6 +286,6 @@ export const postsSlice = createSlice({
     }
 })
 
-export const { dislikePosts, setPostInput, setImgInput, setEditPost } = postsSlice.actions;
+export const { dislikePosts, setPostInput, setImgInput, setEditPost, setSort } = postsSlice.actions;
 
 export default postsSlice.reducer;

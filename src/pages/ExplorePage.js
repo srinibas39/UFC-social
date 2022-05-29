@@ -11,7 +11,7 @@ import { UserPost } from "../components/UserPost/UserPost"
 
 export const ExplorePage = () => {
 
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
 
     return <>
         <Navbar />
