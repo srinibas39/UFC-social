@@ -4,6 +4,7 @@
   margin: auto;
   height: 12rem;
   box-shadow: var(--box-shadow2);
+  background-color: var(--secondary-color);
 }
 
 .input-text {

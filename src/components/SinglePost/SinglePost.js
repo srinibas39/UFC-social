@@ -1,16 +1,24 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { deletePost, dislikePosts, loadDislike, loadLike } from "../../features/postsSlice"
+import { deletePost, dislikePosts, loadDislike, loadLike, setEditPost, setImgInput, setPostInput } from "../../features/postsSlice"
 
 
 
-export const SinglePost = ({ post }) => {
+export const SinglePost = ({ post, setShow }) => {
 
     const dispatch = useDispatch();
     const { dPosts } = useSelector((state) => state.posts);
     const { token } = useSelector((state) => state.auth);
     const navigate = useNavigate();
+
+    const handlePostEdit = () => {
+        setShow(true);
+        dispatch(setPostInput(post.content))
+        dispatch(setImgInput(post.image));
+        dispatch(setEditPost(post));
+
+    }
 
     return <div className="user-post-container">
         <img src={require("../../images/Conor.png")} alt="user" />
@@ -48,6 +56,9 @@ export const SinglePost = ({ post }) => {
                 </span>
                 <span className="material-symbols-outlined">
                     bookmark
+                </span>
+                <span className="material-symbols-outlined" onClick={handlePostEdit}>
+                    edit
                 </span>
                 <span className="material-symbols-outlined">
                     share

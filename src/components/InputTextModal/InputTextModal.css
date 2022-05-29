@@ -1,0 +1,38 @@
+.input-text-modal-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/* .cross2 {
+  position: absolute;
+  left: 263px;
+  top: 67px;
+  color: var(--primary-color);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.input-text-modal-container-div div {
+  position: relative;
+}
+
+.input-text-modal-container-div div > img {
+  border-radius: 0;
+  height: 9rem;
+  width: 10rem;
+  position: absolute;
+  left: 105px;
+  background-color: var(--secondary-color);
+  top: 72px;
+  padding-top: 0px;
+} */

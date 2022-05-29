@@ -6,7 +6,7 @@ import { dislikePosts, loadAllPosts, loadDislike, loadLike } from "../../feature
 import { SinglePost } from "../SinglePost/SinglePost"
 import "./UserPost.css"
 
-export const UserPost = () => {
+export const UserPost = ({ setShow }) => {
 
     const dispatch = useDispatch();
     const { posts, status, dPosts } = useSelector((state) => state.posts);
@@ -22,7 +22,7 @@ export const UserPost = () => {
     return <>
         {
             posts.posts ? posts.posts.map((post) => {
-                return <SinglePost post={post} key={post._id}/>
+                return <SinglePost post={post} key={post._id}  setShow={setShow} />
             }) : ""
         }
     </>

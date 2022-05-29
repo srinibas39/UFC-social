@@ -8,6 +8,7 @@ import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
 import { Error } from "./components/Error/Error";
 
+
 export const App = () => {
   return <Routes>
 
@@ -18,6 +19,7 @@ export const App = () => {
     <Route path="/comment/:postId" element={<CommentPage />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/signup" element={<SignupPage />} />
+
 
   </Routes>
 

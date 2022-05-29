@@ -4,6 +4,7 @@ import { AddPost } from "../services/AddPost"
 import { DeletePost } from "../services/DeletePost";
 import { DislikePost } from "../services/DislikePost";
 import { EditComment } from "../services/EditComment";
+import { EditPost } from "../services/EditPost";
 import { GetAllPosts } from "../services/GetAllPosts";
 import { GetComment } from "../services/GetComment";
 import { GetSinglePost } from "../services/GetSinglePost";
@@ -18,6 +19,9 @@ const initialState = {
     dPosts: [],
     post: null,
     comments: [],
+    postInput: "",
+    imgInput: "",
+    editPost: null
 
 }
 
@@ -123,6 +127,16 @@ export const deletePost = createAsyncThunk("posts/deletePost",
             return thunkAPI.rejectWithValue(err.message);
         }
     })
+export const loadEditPost = createAsyncThunk("posts/loadEditPost",
+    async ({ postData, token }, thunkAPI) => {
+        try {
+            const res = await EditPost({ postData, token });
+            return res.data;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
+        }
+    })
 export const postsSlice = createSlice({
     name: "posts",
     initialState,
@@ -138,6 +152,15 @@ export const postsSlice = createSlice({
                 state.dPosts.push(action.payload.id)
             }
         },
+        setPostInput: (state, action) => {
+            state.postInput = action.payload;
+        },
+        setImgInput: (state, action) => {
+            state.imgInput = action.payload;
+        },
+        setEditPost: (state, action) => {
+            state.editPost = action.payload;
+        }
 
     },
     extraReducers: {
@@ -244,12 +267,21 @@ export const postsSlice = createSlice({
         [deletePost.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [loadEditPost.pending]: (state) => {
+            state.loading = true;
+        },
+        [loadEditPost.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.posts = action.payload;
+        },
+        [loadEditPost.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         }
-
-
     }
 })
 
-export const { dislikePosts, replyComment } = postsSlice.actions;
+export const { dislikePosts, setPostInput, setImgInput, setEditPost } = postsSlice.actions;
 
 export default postsSlice.reducer;
