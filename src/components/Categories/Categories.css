@@ -6,7 +6,7 @@
   margin: auto;
   margin-top: 1rem;
   justify-content: space-evenly;
-  color: var(--primary-color);
+  color: var(--footer-color);
 }
 
 .categories h3 {
@@ -22,4 +22,8 @@
   align-items: center;
   cursor: pointer;
   color: var(--primary-color2);
+}
+
+.primary-color{
+  color:var(--primary-color)
 }
