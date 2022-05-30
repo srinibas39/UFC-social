@@ -12,13 +12,14 @@ export const posts = [
     content:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     image: "",
+    userId: "11d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     likes: {
       likeCount: 4,
       likedBy: [],
       dislikedBy: [],
     },
 
-    username: "adarshbalika",
+    username: "adarsh balika",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [
@@ -30,7 +31,7 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
-        children:[]
+        children: []
       },
       {
         _id: "5d3ef9d4-6a56-4dae-a155-3b4a7554242c",
@@ -40,7 +41,7 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
-        children:[]
+        children: []
       },
     ],
   },
@@ -49,13 +50,14 @@ export const posts = [
     content:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     image: "",
+    userId: "12d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
 
-    username: "shubhamsoni",
+    username: "shubham soni",
 
     comments: [
       {
@@ -66,7 +68,7 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
-        children:[]
+        children: []
       },
       {
         _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
@@ -76,11 +78,11 @@ export const posts = [
           upvotedBy: [],
           downvotedBy: [],
         },
-        children:[]
+        children: []
       },
     ],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
-  
+
 ];
