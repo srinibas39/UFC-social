@@ -36,6 +36,7 @@ export const loadPosts = createAsyncThunk("posts/loadPosts",
             return res.data;
         }
         catch (err) {
+            console.log(err);
             return thunkAPI.rejectWithValue(err.message)
         }
     })

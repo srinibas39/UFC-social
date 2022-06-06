@@ -24,7 +24,7 @@ export const SinglePost = ({ post, setShow }) => {
         <img src={require("../../images/Conor.png")} alt="user" />
         <div>
 
-            <h3>{post.username}</h3>
+            <h3 onClick={() => navigate(`/profile/${post.userId}`)}>{post.username}</h3>
             <small>{Date(post.createdAt)}</small>
             <p>{post.content}</p>
             {

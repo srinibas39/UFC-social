@@ -62,16 +62,16 @@
   background-color: var(--primary-color2);
 }
 
-.btn-logout {
+.btn-logout,.btn-unfollow {
   margin-left: 1rem;
   height: 2rem;
-  width: 5rem;
+  width: 6rem;
   border: 2px solid var(--primary-color);
   background-color: var(--secondary-color2);
   cursor: pointer;
 }
 
-.btn-logout:hover {
+.btn-logout:hover,.btn-unfollow:hover {
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }

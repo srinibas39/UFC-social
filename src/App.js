@@ -14,7 +14,7 @@ export const App = () => {
 
     <Route path="*" element={<Error />} />
     <Route path="/" element={<HomePage />} />
-    <Route path="/profile" element={<ProfilePage />} />
+    <Route path="/profile/:userId" element={<ProfilePage />} />
     <Route path="/explore" element={<ExplorePage />} />
     <Route path="/comment/:postId" element={<CommentPage />} />
     <Route path="/login" element={<LoginPage />} />

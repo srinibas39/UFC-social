@@ -12,6 +12,7 @@ export const InputText = ({ show, setShow }) => {
     const { token } = useSelector((state) => state.auth);
     const { postInput, imgInput, editPost } = useSelector((state) => state.posts);
     const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth);
 
     const inputRef = useRef(null);
     const handleImage = () => {
@@ -37,7 +38,8 @@ export const InputText = ({ show, setShow }) => {
                     token: token, postData: {
                         content: post,
                         image: imageData,
-                        comments: []
+                        comments: [],
+                        userId: user._id
                     }
                 }))
                 setImageData("");

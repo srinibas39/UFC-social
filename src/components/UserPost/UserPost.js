@@ -15,8 +15,6 @@ export const UserPost = ({ setShow }) => {
             dispatch(loadAllPosts());
         }
 
-
-
     }, [dispatch, status, posts])
 
 
@@ -35,8 +33,6 @@ export const UserPost = ({ setShow }) => {
         }
     }
     const sortData = getSortData(sort);
-
-
 
     return <>
         {
