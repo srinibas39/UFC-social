@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { followUser, getAllUsers } from "../../features/UserSlice";
+import { follow, getAllUsers } from "../../features/UserSlice";
 import "./Suggestion.css"
 
 export const Suggestion = () => {
@@ -16,11 +16,12 @@ export const Suggestion = () => {
     const { token } = useSelector((state) => state.auth);
 
     const handleFollow = (userId) => {
-        dispatch(followUser({ token, userId }))
+        dispatch(follow({ token, userId }));
+        
     }
 
-    const getFilterUsers = () => {
-        return users.filter((el) => el._id !== user._id)
+    const getFilterUsers = (userId) => {
+        return users.filter((el) => el._id !== userId)
     }
 
     const filterUsers = getFilterUsers(user._id)

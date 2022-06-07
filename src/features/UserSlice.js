@@ -2,6 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { FollowServices } from "../services/FollowService";
 import { GetAllUsers } from "../services/GetAllUsers";
 import { GetSingleUser } from "../services/GetSingleUser";
+import { UnfollowService } from "../services/UnfollowService";
+
+
 
 
 
@@ -9,10 +12,7 @@ const initialState = {
     users: [],
     loading: false,
     error: "",
-    user: {},
-    followUser: {}
-
-
+    user: {}
 }
 
 export const getAllUsers = createAsyncThunk("users/getAllUsers",
@@ -36,11 +36,22 @@ export const getSingleUser = createAsyncThunk("users/getSingleUser",
             return thunkAPI.rejectWithValue(err.message);
         }
     })
-export const followUser = createAsyncThunk("users/followUser",
+export const follow = createAsyncThunk("users/follow",
     async ({ token, userId }, thunkAPI) => {
         try {
-            
+
             const res = await FollowServices(token, userId);
+            return res.data;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message);
+        }
+    })
+
+export const unfollowUser = createAsyncThunk("/users/unfollowUser",
+    async ({ token, userId }, thunkAPI) => {
+        try {
+            const res = await UnfollowService(token, userId);
             return res.data;
         }
         catch (err) {
@@ -73,18 +84,26 @@ export const userSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-        [followUser.pending]: (state) => {
+        [follow.pending]: (state) => {
             state.loading = true;
 
         },
-        [followUser.fulfilled]: (state, action) => {
+        [follow.fulfilled]: (state, action) => {
             state.loading = false;
-            state.user = action.payload.user;
-            state.followUser = action.payload.followUser;
         },
-        [followUser.rejected]: (state, action) => {
+        [follow.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [unfollowUser.pending]: (state) => {
+            state.loading = true
+        },
+        [unfollowUser.fulfilled]: (state, action) => {
+            state.loading = false;
+        },
+        [unfollowUser.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload
         }
     }
 
