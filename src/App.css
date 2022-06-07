@@ -9,6 +9,7 @@
   --primary-color2: #9e0808;
   --secondary-color: #fff;
   --secondary-color2: #f1f5f9;
+  --secondary-color3:#fee2e2;
   --primary-font-family: "Klavika", Arial, sans-serif;
   --product-like: deeppink;
   --footer-color: #18181b;
@@ -16,3 +17,14 @@
   --box-shadow2: 0px 0px 0 0.5px #aaa;
   --box-shadow3: 0px 0px 0 0.5px var(--primary-color);
 }
+
+/* ::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+   background-color: var(--secondary-color3)
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: var(--primary-color);
+} */

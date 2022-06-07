@@ -29,7 +29,7 @@ export const Profile = () => {
         dispatch(unfollowUser({ token: auth.token, userId }))
         dispatch(getSingleUser(userId));
     }
-    const handlefollow = (userId) => {
+    const handleFollow = (userId) => {
         dispatch(follow({ token: auth.token, userId }))
         dispatch(getSingleUser(userId));
     }
@@ -70,7 +70,7 @@ export const Profile = () => {
                         {
 
                             user.followers && user.followers.length ? <button className="btn-unfollow" onClick={() => handleUnfollow(user._id)}>UNFOLLOW</button> :
-                                <button className="btn-unfollow" onClick={() => handlefollow(user._id)}>FOLLOW</button>
+                                <button className="btn-unfollow" onClick={() => handleFollow(user._id)}>FOLLOW</button>
                         }
 
                     </div>

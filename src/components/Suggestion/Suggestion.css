@@ -6,6 +6,7 @@
   margin: auto;
   margin-top: 1rem;
   justify-content: space-evenly;
+  overflow: auto;
 }
 
 .suggestion {
@@ -15,6 +16,7 @@
     align-items: center;
     padding: 1rem;
     box-shadow: var(--box-shadow3);
+    margin: 0 1rem;
 }
 
 .suggestion img {
@@ -26,7 +28,7 @@
   margin-bottom: 1rem;
 }
 .suggestion button{
-    width: 5rem;
+    width: 6rem;
     border: none;
     height: 2rem;
     background-color: var(--primary-color);
@@ -37,3 +39,19 @@
 .suggestion button:hover{
     background-color: var(--primary-color2);
 }
+
+
+
+div.suggestion-container::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+}
+div.suggestion-container::-webkit-scrollbar-track{
+   background-color: var(--secondary-color3)
+}
+
+div.suggestion-container::-webkit-scrollbar-thumb{
+  background-color: var(--primary-color);
+}
+
+

@@ -18,36 +18,7 @@ export const users = [
     website: "",
     profile: "",
     bookmark: [],
-    followers: [{
-      _id: "14d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-      firstName: "Sriyasri",
-      lastName: "Khuntia",
-      username: "sriyasri khuntia",
-      password: "sriyasrikhuntia123",
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
-      image: "",
-      website: "",
-      profile: "",
-      bookmark: [],
-      followers: [],
-      following: []
-    },],
-    following: [{
-      _id: "11d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-      firstName: "adarsh",
-      lastName: "ballika",
-      username: "adarsh ballika",
-      password: "adarshballika123",
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
-      image: "",
-      website: "",
-      profile: "",
-      bookmark: [],
-      followers: [],
-      following: []
-    },]
+    followers: []
   },
   {
     _id: "14d3ef9d4-6a56-4dae-a155-3b4a7554242c",
@@ -94,4 +65,50 @@ export const users = [
     followers: [],
     following: []
   },
+  {
+    _id: "15d3ef9d4-6a56-4dae-a155-3b4a7554242c",
+    firstName: "ayush",
+    lastName: "panda",
+    username: "ayush panda",
+    password: "ayushpanda123",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    image: "",
+    website: "",
+    profile: "",
+    bookmark: [],
+    followers: [],
+    following: []
+  },
+  {
+    _id: "16d3ef9d4-6a56-4dae-a155-3b4a7554242c",
+    firstName: "bharat",
+    lastName: "mohanty",
+    username: "bharat mohanty",
+    password: "bharatmohanty123",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    image: "",
+    website: "",
+    profile: "",
+    bookmark: [],
+    followers: [],
+    following: []
+  },
+  {
+    _id: "17d3ef9d4-6a56-4dae-a155-3b4a7554242c",
+    firstName: "adarsh",
+    lastName: "mohanty",
+    username: "adarsh mohanty",
+    password: "adarshmohanty123",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    image: "",
+    website: "",
+    profile: "",
+    bookmark: [],
+    followers: [],
+    following: []
+  },
+
 ]

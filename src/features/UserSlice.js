@@ -86,9 +86,8 @@ export const userSlice = createSlice({
         },
         [follow.pending]: (state) => {
             state.loading = true;
-
         },
-        [follow.fulfilled]: (state, action) => {
+        [follow.fulfilled]: (state) => {
             state.loading = false;
         },
         [follow.rejected]: (state, action) => {
@@ -98,7 +97,7 @@ export const userSlice = createSlice({
         [unfollowUser.pending]: (state) => {
             state.loading = true
         },
-        [unfollowUser.fulfilled]: (state, action) => {
+        [unfollowUser.fulfilled]: (state) => {
             state.loading = false;
         },
         [unfollowUser.rejected]: (state, action) => {
