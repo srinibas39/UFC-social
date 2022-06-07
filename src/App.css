@@ -18,7 +18,7 @@
   --box-shadow3: 0px 0px 0 0.5px var(--primary-color);
 }
 
-/* ::-webkit-scrollbar{
+::-webkit-scrollbar{
   width: 10px;
 }
 ::-webkit-scrollbar-track{
@@ -27,4 +27,4 @@
 
 ::-webkit-scrollbar-thumb{
   background-color: var(--primary-color);
-} */
+}

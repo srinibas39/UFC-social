@@ -1,0 +1,31 @@
+.sorting-posts {
+    display: flex;
+    padding: 1rem;
+    width: 40rem;
+    box-shadow: var(--box-shadow2);
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: space-evenly;
+    color: var(--footer-color);
+    background-color: var(--secondary-color2);
+  }
+  
+  .sorting-posts h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .sorting-posts h3:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--primary-color2);
+  }
+  
+  .primary-color{
+    color:var(--primary-color)
+  }
