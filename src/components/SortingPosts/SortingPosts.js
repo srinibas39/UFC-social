@@ -12,10 +12,10 @@ export const SortingPosts = () => {
     });
     return <div className="sorting-posts">
 
-        <h3 className={ciickedCategory.trend ? "primary-color" : ""} onClick={(e) => (dispatch(setSort(e.target.innerText.split("\n")[1])), setclickedCategory({ ...ciickedCategory, trend: true, recent: false }))}><span class="material-symbols-outlined">
+        <h3 className={ciickedCategory.trend ? "primary-color" : ""} onClick={(e) => (dispatch(setSort(e.target.innerText.split("\n")[1])), setclickedCategory({ ...ciickedCategory, trend: true, recent: false }))}><span className="material-symbols-outlined">
             bookmarks
         </span>BOOKMARKS</h3>
-        <h3 className={ciickedCategory.recent ? "primary-color" : ""} onClick={(e) => (dispatch(setSort(e.target.innerText.split("\n")[1])), setclickedCategory({ ...ciickedCategory, trend: false, recent: true }))}><span class="material-symbols-outlined">
+        <h3 className={ciickedCategory.recent ? "primary-color" : ""} onClick={(e) => (dispatch(setSort(e.target.innerText.split("\n")[1])), setclickedCategory({ ...ciickedCategory, trend: false, recent: true }))}><span className="material-symbols-outlined">
             article
         </span>POSTS</h3>
 

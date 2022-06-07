@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { EditUser } from "../services/EditUser";
 import { FollowServices } from "../services/FollowService";
 import { GetAllUsers } from "../services/GetAllUsers";
 import { GetSingleUser } from "../services/GetSingleUser";
@@ -58,6 +59,17 @@ export const unfollowUser = createAsyncThunk("/users/unfollowUser",
             return thunkAPI.rejectWithValue(err.message);
         }
     })
+
+export const editUser = createAsyncThunk("users/editUse",
+    async ({ token, userData }, thunkAPI) => {
+        try {
+            const res = await EditUser(token, userData);
+            return res.data.user;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message);
+        }
+    })
 export const userSlice = createSlice({
     initialState,
     name: "users",
@@ -103,6 +115,17 @@ export const userSlice = createSlice({
         [unfollowUser.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload
+        },
+        [editUser.pending]: (state) => {
+            state.loading = true;
+        },
+        [editUser.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.user = action.payload;
+        },
+        [editUser.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         }
     }
 

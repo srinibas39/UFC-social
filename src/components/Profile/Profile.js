@@ -46,6 +46,7 @@ export const Profile = () => {
                     <button className="btn-logout" onClick={handleLogout}>LOGOUT</button>
                 </div>
                 <p>{user.profile}</p>
+                <p style={{fontWeight:"bold",margin:"1rem"}}>{user.website}</p>
                 <div className="followers">
                     <div>
                         <h2>{user.following ? user.following.length : 0}</h2>

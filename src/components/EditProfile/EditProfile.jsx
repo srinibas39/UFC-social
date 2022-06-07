@@ -1,12 +1,32 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { editUser } from "../../features/UserSlice";
 import "./EditProfile.css";
 
-export const EditProfile = ({ show , setShow}) => {
+export const EditProfile = ({ show, setShow }) => {
+  const [userData, setUserData] = useState({
+    website: "",
+    profile: "",
+  });
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+
+  const handleUpdate = () => {
+    dispatch(editUser({ token, userData }));
+    setShow(false)
+  
+  };
   return (
     <>
-      {
-       show && <div className="edit-profile-container"onClick={()=>setShow(false)}>
-          <div className="edit-profile" onClick={(e)=>e.stopPropagation()}>
-            <span className="material-symbols-outlined" onClick={()=>setShow(false)}>close</span>
+      {show && (
+        <div className="edit-profile-container" onClick={() => setShow(false)}>
+          <div className="edit-profile" onClick={(e) => e.stopPropagation()}>
+            <span
+              className="material-symbols-outlined"
+              onClick={() => setShow(false)}
+            >
+              close
+            </span>
 
             <div className="avatar">
               <h3>Avatar</h3>
@@ -23,17 +43,27 @@ export const EditProfile = ({ show , setShow}) => {
             <div className="website">
               <h3>Website</h3>
 
-              <textarea />
+              <textarea
+                value={userData.website}
+                onChange={(e) =>
+                  setUserData({ ...userData, website: e.target.value })
+                }
+              />
             </div>
             <div className="bio">
               <h3>Bio</h3>
 
-              <textarea />
+              <textarea
+                value={userData.profile}
+                onChange={(e) =>
+                  setUserData({ ...userData, profile: e.target.value })
+                }
+              />
             </div>
-            <button>Update</button>
+            <button onClick={handleUpdate}>Update</button>
           </div>
         </div>
-      }
+      )}
     </>
   );
 };
