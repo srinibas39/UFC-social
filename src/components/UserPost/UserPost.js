@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useLocation } from "react-router-dom"
 import { loadAllPosts } from "../../features/postsSlice"
 import { SinglePost } from "../SinglePost/SinglePost"
 import "./UserPost.css"
@@ -7,8 +8,9 @@ import "./UserPost.css"
 export const UserPost = ({ setShow }) => {
 
     const dispatch = useDispatch();
-    const { posts, status, sort } = useSelector((state) => state.posts);
+    const { posts, status, sort, userPosts } = useSelector((state) => state.posts);
 
+    
 
     useEffect(() => {
         if (status === "idle") {
@@ -19,6 +21,7 @@ export const UserPost = ({ setShow }) => {
 
 
     const getSortData = (sort) => {
+        
         if (sort === "Trending") {
             const allPosts = [...posts.posts];
             return allPosts.sort((a, b) => b.likes.likeCount - a.likes.likeCount);

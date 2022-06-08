@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadLogout } from "../../features/authSlice";
+import { getAllPostUser } from "../../features/postsSlice";
 import { follow, getSingleUser, unfollowUser } from "../../features/UserSlice";
 import { EditProfile } from "../EditProfile/EditProfile"
 import "./Profile.css"
@@ -9,7 +10,7 @@ export const Profile = () => {
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
 
-    const { user, followUser } = useSelector((state) => state.users);
+    const { user } = useSelector((state) => state.users);
 
     const auth = useSelector((state) => state.auth);
 
@@ -17,7 +18,12 @@ export const Profile = () => {
 
     useEffect(() => {
         dispatch(getSingleUser(userId));
+
     }, [])
+
+    useEffect(() => {
+        dispatch(getAllPostUser(user.username));
+    }, [user])
 
 
 
@@ -37,7 +43,7 @@ export const Profile = () => {
 
     return <>
         {
-          userId === auth.user._id ? <div className="profile-container">
+            userId === auth.user._id ? <div className="profile-container">
                 <img src={require("../../images/Conor.png")} alt="user" />
                 <h2>{user.firstName + " " + user.lastName}</h2>
                 <small>@{user.firstName}</small>
@@ -46,7 +52,7 @@ export const Profile = () => {
                     <button className="btn-logout" onClick={handleLogout}>LOGOUT</button>
                 </div>
                 <p>{user.profile}</p>
-                <p style={{fontWeight:"bold",margin:"1rem"}}>{user.website}</p>
+                <p style={{ fontWeight: "bold", margin: "1rem" }}>{user.website}</p>
                 <div className="followers">
                     <div>
                         <h2>{user.following ? user.following.length : 0}</h2>

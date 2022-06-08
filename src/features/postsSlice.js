@@ -6,6 +6,7 @@ import { DislikePost } from "../services/DislikePost";
 import { EditComment } from "../services/EditComment";
 import { EditPost } from "../services/EditPost";
 import { GetAllPosts } from "../services/GetAllPosts";
+import { GetAllPostUser } from "../services/GetAllPostUser";
 import { GetComment } from "../services/GetComment";
 import { GetSinglePost } from "../services/GetSinglePost";
 import { LikePost } from "../services/LikePost";
@@ -22,7 +23,8 @@ const initialState = {
     postInput: "",
     imgInput: "",
     editPost: null,
-    sort: ""
+    sort: "",
+    userPosts:[]
 
 }
 
@@ -134,6 +136,17 @@ export const loadEditPost = createAsyncThunk("posts/loadEditPost",
         try {
             const res = await EditPost({ postData, token });
             return res.data;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
+        }
+    })
+export const getAllPostUser = createAsyncThunk("posts/getAllPostUser",
+    async (username, thunkAPI) => {
+        try {
+        
+            const res = await GetAllPostUser(username);
+            return res.data.posts;
         }
         catch (err) {
             return thunkAPI.rejectWithValue(err.message)
@@ -283,6 +296,20 @@ export const postsSlice = createSlice({
         [loadEditPost.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [getAllPostUser.pending]: (state) => {
+            state.loading = true;
+        },
+        [getAllPostUser.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.userPosts=action.payload
+            console.log(action.payload.posts)
+
+          
+        },
+        [getAllPostUser.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload.posts;
         }
     }
 })

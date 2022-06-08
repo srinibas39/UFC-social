@@ -19,13 +19,13 @@ export const posts = [
       dislikedBy: [],
     },
 
-    username: "adarsh balika",
+    username: "adarsh ballika",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [
       {
         _id: "4d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "shubhamsoni",
+        username: "shubham soni",
         text: "Interesting",
         votes: {
           upvotedBy: [],
@@ -35,7 +35,7 @@ export const posts = [
       },
       {
         _id: "5d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "sohamshah",
+        username: "soham shah",
         text: "Wow!",
         votes: {
           upvotedBy: [],
@@ -57,12 +57,12 @@ export const posts = [
       dislikedBy: [],
     },
 
-    username: "shubham soni",
+    username: "subham soni",
 
     comments: [
       {
         _id: "7d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "shubhamsoni",
+        username: "subham soni",
         text: "Interesting",
         votes: {
           upvotedBy: [],
@@ -72,7 +72,7 @@ export const posts = [
       },
       {
         _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "sohamshah",
+        username: "soham shah",
         text: "Wow!",
         votes: {
           upvotedBy: [],
