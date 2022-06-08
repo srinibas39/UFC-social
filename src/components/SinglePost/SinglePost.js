@@ -1,7 +1,11 @@
 
+
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { deletePost, dislikePosts, loadDislike, loadLike, setEditPost, setImgInput, setPostInput } from "../../features/postsSlice"
+import { addBookmark, removeBookmark } from "../../features/userSlice";
+import "./SinglePost.css"
+
 
 
 
@@ -10,6 +14,7 @@ export const SinglePost = ({ post, setShow }) => {
     const dispatch = useDispatch();
     const { dPosts } = useSelector((state) => state.posts);
     const { token } = useSelector((state) => state.auth);
+    const { bookmarks } = useSelector((state) => state.users)
     const navigate = useNavigate();
 
     const handlePostEdit = () => {
@@ -19,6 +24,15 @@ export const SinglePost = ({ post, setShow }) => {
         dispatch(setEditPost(post));
 
     }
+
+    const handleBookmark = () => {
+        dispatch(addBookmark({ token, postId: post._id }))
+    }
+
+    const handleUnbookmark = () => {
+        dispatch(removeBookmark({ token, postId: post._id }))
+    }
+
 
     return <div className="user-post-container">
         <img src={require("../../images/Conor.png")} alt="user" />
@@ -54,9 +68,17 @@ export const SinglePost = ({ post, setShow }) => {
                 <span className="material-symbols-outlined" onClick={() => navigate(`/comment/${post._id}`)}>
                     chat_bubble
                 </span>
-                <span className="material-symbols-outlined">
-                    bookmark
-                </span>
+                {
+                    bookmarks.some((el) => el._id === post._id) ? <span className="material-icons-outlined" onClick={handleUnbookmark}>
+                        bookmark
+                    </span> : <span className="material-symbols-outlined" onClick={handleBookmark}>
+                        bookmark
+                    </span>
+                }
+
+
+
+
                 <span className="material-symbols-outlined" onClick={handlePostEdit}>
                     edit
                 </span>
@@ -69,5 +91,5 @@ export const SinglePost = ({ post, setShow }) => {
             </div>
         </div>
 
-    </div>
+    </div >
 }

@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadLogout } from "../../features/authSlice";
 import { getAllPostUser } from "../../features/postsSlice";
-import { follow, getSingleUser, unfollowUser } from "../../features/UserSlice";
+import { follow, getSingleUser, unfollowUser } from "../../features/userSlice";
 import { EditProfile } from "../EditProfile/EditProfile"
 import "./Profile.css"
 export const Profile = () => {
     const [show, setShow] = useState(false);
+    
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.users);
@@ -18,7 +19,6 @@ export const Profile = () => {
 
     useEffect(() => {
         dispatch(getSingleUser(userId));
-
     }, [])
 
     useEffect(() => {

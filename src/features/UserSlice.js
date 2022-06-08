@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { AddBookmark } from "../services/AddBookmark";
 import { EditUser } from "../services/EditUser";
 import { FollowServices } from "../services/FollowService";
 import { GetAllUsers } from "../services/GetAllUsers";
 import { GetSingleUser } from "../services/GetSingleUser";
+import { RemoveBookmark } from "../services/RemoveBookmark";
 import { UnfollowService } from "../services/UnfollowService";
 
 
@@ -13,7 +15,9 @@ const initialState = {
     users: [],
     loading: false,
     error: "",
-    user: {}
+    user: {},
+    bookmarks: [],
+    
 }
 
 export const getAllUsers = createAsyncThunk("users/getAllUsers",
@@ -70,9 +74,31 @@ export const editUser = createAsyncThunk("users/editUse",
             return thunkAPI.rejectWithValue(err.message);
         }
     })
+export const addBookmark = createAsyncThunk("users/addBookmark",
+    async ({ token, postId }, thunkAPI) => {
+        try {
+            const res = await AddBookmark(token, postId);
+            return res.data.bookmarks;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message);
+        }
+    })
+
+export const removeBookmark = createAsyncThunk("users/removeBookmark",
+    async ({ token, postId }, thunkAPI) => {
+        try {
+            const res = await RemoveBookmark(token, postId);
+            return res.data.bookmarks;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message);
+        }
+    })
 export const userSlice = createSlice({
     initialState,
     name: "users",
+    
     extraReducers: {
         [getAllUsers.pending]: (state) => {
             state.loading = true;
@@ -126,10 +152,35 @@ export const userSlice = createSlice({
         [editUser.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        [addBookmark.pending]: (state) => {
+            state.loading = true;
+        },
+        [addBookmark.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.bookmarks = action.payload;
+
+        },
+        [addBookmark.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+
+        [removeBookmark.pending]: (state) => {
+            state.loading = true;
+        },
+        [removeBookmark.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.bookmarks = action.payload;
+        },
+        [removeBookmark.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         }
     }
 
 })
+
 
 
 export default userSlice.reducer;

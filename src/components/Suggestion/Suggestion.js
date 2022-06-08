@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { follow, getAllUsers, unfollowUser } from "../../features/UserSlice";
+import { follow, getAllUsers, unfollowUser } from "../../features/userSlice";
 import "./Suggestion.css"
 
 export const Suggestion = () => {
