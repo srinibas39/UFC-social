@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { setSort } from "../../features/postsSlice";
 import "./SortingPosts.css"
 
@@ -13,7 +12,7 @@ export const SortingPosts = () => {
     });
     const auth = useSelector((state) => state.auth);
     const { user } = useSelector((state) => state.users);
-    const { postId } = useParams();
+   
 
     return <div className="sorting-posts">
         {
