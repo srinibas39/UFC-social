@@ -8,7 +8,7 @@ import { EditProfile } from "../EditProfile/EditProfile"
 import "./Profile.css"
 export const Profile = () => {
     const [show, setShow] = useState(false);
-    
+
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.users);

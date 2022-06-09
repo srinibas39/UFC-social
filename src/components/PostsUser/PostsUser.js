@@ -3,11 +3,21 @@ import { SinglePost } from "../SinglePost/SinglePost";
 
 export const PostsUser = () => {
     const dispatch = useDispatch();
-    const { userPosts } = useSelector((state) => state.posts)
+    const { userPosts, sort } = useSelector((state) => state.posts);
+    const { bookmarks } = useSelector((state) => state.users);
 
+    const getFilteredData = () => {
+        if (sort === "POSTS") {
+            return userPosts;
+        }
+        if (sort === "BOOKMARKS") {
+            return bookmarks;
+        }
+    }
+    const filteredData = getFilteredData()
     return <>
         {
-            userPosts && userPosts.map((post) => {
+            filteredData && filteredData.map((post) => {
                 return <SinglePost post={post} key={post._id} />
             })
         }
