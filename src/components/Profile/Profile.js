@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadLogout } from "../../features/authSlice";
 import { getAllPostUser } from "../../features/postsSlice";
-import { follow, getSingleUser, unfollowUser } from "../../features/userSlice";
+import { follow, getSingleUser, unfollowUser } from "../../features/UserSlice";
 import { EditProfile } from "../EditProfile/EditProfile"
 import "./Profile.css"
 export const Profile = () => {

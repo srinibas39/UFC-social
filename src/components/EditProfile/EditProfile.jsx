@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../features/userSlice";
+import { editUser } from "../../features/UserSlice";
 import "./EditProfile.css";
 
 export const EditProfile = ({ show, setShow }) => {

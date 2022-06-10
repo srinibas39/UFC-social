@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { deletePost, dislikePosts, loadDislike, loadLike, setEditPost, setImgInput, setPostInput } from "../../features/postsSlice"
-import { addBookmark, removeBookmark } from "../../features/userSlice";
+import { addBookmark, removeBookmark } from "../../features/UserSlice";
 import "./SinglePost.css"
 
 
