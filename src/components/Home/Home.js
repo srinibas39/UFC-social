@@ -1,6 +1,10 @@
-import "./Home.css"
+import { useNavigate } from "react-router-dom"
+import "./Home.css";
+import HomeSvg from "../../images/Home.svg";
+
 
 export const Home = () => {
+    const navigate = useNavigate();
     return <div className="home-container">
         <div className="home">
             <h1>UFC <span>SOCIAL</span></h1>
@@ -20,13 +24,12 @@ export const Home = () => {
 
             </div>
             <div className="buttons">
-                <button>JOIN NOW</button>
-                <a>Already have an account?</a>
+                <button onClick={() => navigate("/login")}>JOIN NOW</button>
             </div>
 
         </div>
         <div className="home-img">
-            <img src={require("../../images/ufc-logo.jpg")}></img>
+            <img src={HomeSvg}></img>
         </div>
     </div>
 }

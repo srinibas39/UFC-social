@@ -7,31 +7,36 @@ import { loadLogin } from "../../features/authSlice";
 
 export const Login = () => {
     const navigate = useNavigate();
+
     const [form, setForm] = useState({
         username: "", password: ""
     })
 
-    const { loading, token, user, error } = useSelector((state) => state.auth);
+    const { user } = useSelector((state) => state.auth);
+
     const dispatch = useDispatch();
-    // console.log((loginData));
+
+
+    useEffect(() => {
+        if (user) {
+            navigate("/explore");
+        }
+    }, [user])
+
+
     const handleSubmit = () => {
-
-        // handleLogin(form.username, form.password);
-        // navigate("/products");
-
         dispatch(loadLogin({ username: form.username, password: form.password }))
 
     }
 
-    // useEffect(() => {
-    //     if (token) {
-    //         navigate(`${location?.state?.from?.pathname}`)
-    //     }
-    // }, [loggedIn])
+
 
     const handleGuest = () => {
-        setForm({ ...form, username: "srinibas khuntia", password: "srinibaskhuntia123" })
+
+        dispatch(loadLogin({ username: "srinibas khuntia", password: "srinibaskhuntia123" }))
+
     }
+
 
     return <div className="login-container">
         <div className="login">

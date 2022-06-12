@@ -7,10 +7,6 @@ import { GetSingleUser } from "../services/GetSingleUser";
 import { RemoveBookmark } from "../services/RemoveBookmark";
 import { UnfollowService } from "../services/UnfollowService";
 
-
-
-
-
 const initialState = {
     users: [],
     loading: false,
@@ -30,7 +26,6 @@ export const getAllUsers = createAsyncThunk("users/getAllUsers",
             return thunkAPI.rejectWithValue(err.message);
         }
     })
-
 export const getSingleUser = createAsyncThunk("users/getSingleUser",
     async (userId, thunkAPI) => {
         try {

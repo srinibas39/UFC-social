@@ -19,7 +19,7 @@ export const Profile = () => {
 
     useEffect(() => {
         dispatch(getSingleUser(userId));
-    }, [])
+    }, [userId])
 
     useEffect(() => {
         dispatch(getAllPostUser(user.username));
