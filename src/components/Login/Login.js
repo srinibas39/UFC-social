@@ -32,9 +32,7 @@ export const Login = () => {
 
 
     const handleGuest = () => {
-
         dispatch(loadLogin({ username: "srinibas khuntia", password: "srinibaskhuntia123" }))
-
     }
 
 
