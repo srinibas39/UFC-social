@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import { AutoComplete } from "../components/AutoComplete/AutoComplete"
 import { Categories } from "../components/Categories/Categories"
 import { InputText } from "../components/InputText/InputText"
@@ -11,7 +12,8 @@ import { UserPost } from "../components/UserPost/UserPost"
 
 export const ExplorePage = () => {
 
-    const [show, setShow] = useState(false);
+    const { show } = useSelector((state) => state.posts)
+
 
     return <>
         <Navbar />
@@ -19,8 +21,8 @@ export const ExplorePage = () => {
         <InputText />
         <Suggestion />
         <Categories />
-        <UserPost setShow={setShow} />
-        <InputTextModal show={show} setShow={setShow} />
+        <UserPost />
+        <InputTextModal show={show}  />
 
     </>
 }

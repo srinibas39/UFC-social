@@ -24,7 +24,8 @@ const initialState = {
     imgInput: "",
     editPost: null,
     sort: "",
-    userPosts:[]
+    userPosts: [],
+    show: false
 
 }
 
@@ -144,7 +145,7 @@ export const loadEditPost = createAsyncThunk("posts/loadEditPost",
 export const getAllPostUser = createAsyncThunk("posts/getAllPostUser",
     async (username, thunkAPI) => {
         try {
-        
+
             const res = await GetAllPostUser(username);
             return res.data.posts;
         }
@@ -163,7 +164,6 @@ export const postsSlice = createSlice({
 
             }
             else {
-
                 state.dPosts.push(action.payload.id)
             }
         },
@@ -178,6 +178,9 @@ export const postsSlice = createSlice({
         },
         setSort: (state, action) => {
             state.sort = action.payload;
+        },
+        setShow: (state, action) => {
+            state.show = action.payload
         }
 
     },
@@ -302,10 +305,7 @@ export const postsSlice = createSlice({
         },
         [getAllPostUser.fulfilled]: (state, action) => {
             state.loading = false;
-            state.userPosts=action.payload
-            console.log(action.payload.posts)
-
-          
+            state.userPosts = action.payload
         },
         [getAllPostUser.rejected]: (state, action) => {
             state.loading = false;
@@ -314,6 +314,6 @@ export const postsSlice = createSlice({
     }
 })
 
-export const { dislikePosts, setPostInput, setImgInput, setEditPost, setSort } = postsSlice.actions;
+export const { dislikePosts, setPostInput, setImgInput, setEditPost, setSort, setShow } = postsSlice.actions;
 
 export default postsSlice.reducer;

@@ -2,14 +2,14 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { deletePost, dislikePosts, loadDislike, loadLike, setEditPost, setImgInput, setPostInput } from "../../features/postsSlice"
+import { deletePost, dislikePosts, loadDislike, loadLike, setEditPost, setImgInput, setPostInput, setShow } from "../../features/postsSlice"
 import { addBookmark, removeBookmark } from "../../features/UserSlice";
 import "./SinglePost.css"
 
 
 
 
-export const SinglePost = ({ post, setShow }) => {
+export const SinglePost = ({ post}) => {
 
     const dispatch = useDispatch();
     const { dPosts } = useSelector((state) => state.posts);
@@ -18,7 +18,7 @@ export const SinglePost = ({ post, setShow }) => {
     const navigate = useNavigate();
 
     const handlePostEdit = () => {
-        setShow(true);
+        dispatch(setShow(true));
         dispatch(setPostInput(post.content))
         dispatch(setImgInput(post.image));
         dispatch(setEditPost(post));

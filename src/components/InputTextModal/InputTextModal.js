@@ -1,16 +1,17 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux"
+import { setShow } from "../../features/postsSlice";
 import { InputText } from "../InputText/InputText"
 import "./InputTextModal.css"
 
-export const InputTextModal = ({ show, setShow }) => {
+export const InputTextModal = ({ show }) => {
 
-    const { imgInput } = useSelector((state) => state.posts);
+    const dispatch = useDispatch();
     return <>
         {
-            show && <div className="input-text-modal-container" onClick={() => setShow(false)}>
+            show && <div className="input-text-modal-container" onClick={() => dispatch(setShow(false))}>
                 <div className="input-text-modal-container-div">
-                    <InputText show={show} setShow={setShow} />``
+                    <InputText show={show} />``
                 </div>
             </div>
         }

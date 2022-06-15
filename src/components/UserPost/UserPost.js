@@ -1,14 +1,13 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useLocation } from "react-router-dom"
 import { loadAllPosts } from "../../features/postsSlice"
 import { SinglePost } from "../SinglePost/SinglePost"
 import "./UserPost.css"
 
-export const UserPost = ({ setShow }) => {
+export const UserPost = () => {
 
     const dispatch = useDispatch();
-    const { posts, status, sort, userPosts } = useSelector((state) => state.posts);
+    const { posts, status, sort } = useSelector((state) => state.posts);
 
     
 
@@ -40,7 +39,7 @@ export const UserPost = ({ setShow }) => {
     return <>
         {
             sortData ? sortData.map((post) => {
-                return <SinglePost post={post} key={post._id} setShow={setShow} />
+                return <SinglePost post={post} key={post._id} />
             }) : ""
         }
     </>

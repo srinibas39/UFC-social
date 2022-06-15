@@ -1,10 +1,10 @@
 
 import { useState, useRef, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { editPost, loadEditPost, loadPosts, setEditPost, setImgInput, setPostInput } from "../../features/postsSlice";
+import { editPost, loadEditPost, loadPosts, setEditPost, setImgInput, setPostInput, setShow } from "../../features/postsSlice";
 import "./InputText.css"
 
-export const InputText = ({ show, setShow }) => {
+export const InputText = ({ show }) => {
 
     const [post, setPost] = useState("");
     const [imageData, setImageData] = useState("");
@@ -29,7 +29,7 @@ export const InputText = ({ show, setShow }) => {
         if (editPost) {
             dispatch(loadEditPost({ postData: { ...editPost, content: post, image: imgInput }, token }));
             dispatch(setEditPost(null));
-            setShow(false);
+            dispatch(setShow(false));
             dispatch(setImgInput(""))
         }
         else {
