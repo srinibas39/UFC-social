@@ -9,11 +9,11 @@ import "./SinglePost.css"
 
 
 
-export const SinglePost = ({ post}) => {
+export const SinglePost = ({ post }) => {
 
     const dispatch = useDispatch();
     const { dPosts } = useSelector((state) => state.posts);
-    const { token } = useSelector((state) => state.auth);
+    const { token, user } = useSelector((state) => state.auth);
     const { bookmarks } = useSelector((state) => state.users)
     const navigate = useNavigate();
 
@@ -78,16 +78,21 @@ export const SinglePost = ({ post}) => {
 
 
 
+                {
+                    post.username === user.username && <span className="material-symbols-outlined" onClick={handlePostEdit}>
+                        edit
+                    </span>
+                }
 
-                <span className="material-symbols-outlined" onClick={handlePostEdit}>
-                    edit
-                </span>
                 <span className="material-symbols-outlined">
                     share
                 </span>
-                <span className="material-symbols-outlined" onClick={() => dispatch(deletePost({ postId: post._id, token: token }))}>
-                    delete
-                </span>
+                {
+                    post.username === user.username && <span className="material-symbols-outlined" onClick={() => dispatch(deletePost({ postId: post._id, token: token }))}>
+                        delete
+                    </span>
+                }
+
             </div>
         </div>
 
