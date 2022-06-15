@@ -20,7 +20,7 @@
 + Login
 + Logout
 
-##Tech stack
+## Tech stack
 + HTML
 + CSS
 + javascript
