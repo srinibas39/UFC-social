@@ -20,7 +20,6 @@
 
 .comment-text {
   width: 100%;
-  min-height: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

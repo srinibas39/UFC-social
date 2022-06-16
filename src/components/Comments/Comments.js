@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
-import { findPost, getSinglePost, loadAllPosts, loadComments } from "../../features/postsSlice";
+import { getSinglePost,loadComments } from "../../features/postsSlice";
 import { Comment } from "../Comment/Comment"
 import { CommentText } from "../CommentText/CommentText";
 import { SinglePost } from "../SinglePost/SinglePost";
@@ -13,7 +13,8 @@ export const Comments = () => {
     const { postId } = useParams();
 
     const dispatch = useDispatch();
-    const { post,comments, posts } = useSelector((state) => state.posts);
+    const { post, comments, posts } = useSelector((state) => state.posts);
+    
 
     useEffect(() => {
         dispatch(getSinglePost(postId))

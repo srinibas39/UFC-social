@@ -13,7 +13,7 @@ const initialState = {
     error: "",
     user: {},
     bookmarks: [],
-    
+
 }
 
 export const getAllUsers = createAsyncThunk("users/getAllUsers",
@@ -72,6 +72,8 @@ export const editUser = createAsyncThunk("users/editUse",
 export const addBookmark = createAsyncThunk("users/addBookmark",
     async ({ token, postId }, thunkAPI) => {
         try {
+            console.log(token);
+            console.log(postId);
             const res = await AddBookmark(token, postId);
             return res.data.bookmarks;
         }
@@ -93,7 +95,7 @@ export const removeBookmark = createAsyncThunk("users/removeBookmark",
 export const userSlice = createSlice({
     initialState,
     name: "users",
-    
+
     extraReducers: {
         [getAllUsers.pending]: (state) => {
             state.loading = true;

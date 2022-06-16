@@ -36,7 +36,7 @@ export const Suggestion = () => {
         {
             filterUsers && filterUsers.map((user) => {
                 return <div className="suggestion" key={user._id}>
-                    <img src={require("../../images/Conor.png")} alt="user" />
+                    <img src={user.image} alt="user" />
 
                     {
 

@@ -5,6 +5,12 @@ import { formatDate } from "../utils/authUtils";
  * You can add default users of your wish with different attributes
  * */
 
+ import amanda from "../../images/Amanda.png"
+ import Brandon from "../../images/Brandon Moreno.png"
+ import Colby from "../../images/Colby Covington.png"
+ import izzy from "../../images/izz.png"
+ import Khabib from "../../images/Khabib.png"
+ import Conor from "../../images/Conor.png"
 
 export const users = [
   {
@@ -15,7 +21,7 @@ export const users = [
     password: "srinibaskhuntia123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    image: "",
+    image: Conor,
     website: "",
     profile: "",
     bookmark: [],
@@ -29,22 +35,7 @@ export const users = [
     password: "sriyasrikhuntia123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    image: "",
-    website: "",
-    profile: "",
-    bookmark: [],
-    followers: [],
-    following: []
-  },
-  {
-    _id: "11d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-    firstName: "adarsh",
-    lastName: "ballika",
-    username: "adarsh ballika",
-    password: "adarshballika123",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-    image: "",
+    image: amanda,
     website: "",
     profile: "",
     bookmark: [],
@@ -59,7 +50,7 @@ export const users = [
     password: "subhamsoni123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    image: "",
+    image: Colby,
     website: "",
     profile: "",
     bookmark: [],
@@ -74,7 +65,7 @@ export const users = [
     password: "ayushpanda123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    image: "",
+    image: Brandon,
     website: "",
     profile: "",
     bookmark: [],
@@ -89,7 +80,7 @@ export const users = [
     password: "bharatmohanty123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    image: "",
+    image: izzy,
     website: "",
     profile: "",
     bookmark: [],
@@ -104,7 +95,7 @@ export const users = [
     password: "adarshmohanty123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    image: "",
+    image: Khabib,
     website: "",
     profile: "",
     bookmark: [],
