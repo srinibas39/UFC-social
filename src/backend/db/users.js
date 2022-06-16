@@ -5,6 +5,7 @@ import { formatDate } from "../utils/authUtils";
  * You can add default users of your wish with different attributes
  * */
 
+
 export const users = [
   {
     _id: "13d3ef9d4-6a56-4dae-a155-3b4a7554242c",

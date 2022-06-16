@@ -2,7 +2,9 @@
 import { useState, useRef, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { editPost, loadEditPost, loadPosts, setEditPost, setImgInput, setPostInput, setShow } from "../../features/postsSlice";
-import "./InputText.css"
+import "./InputText.css";
+import Conor from "../../images/Conor.png"
+
 
 export const InputText = ({ show }) => {
 
@@ -39,7 +41,8 @@ export const InputText = ({ show }) => {
                         content: post,
                         image: imageData,
                         comments: [],
-                        userId: user._id
+                        userId: user._id,
+                        profileImg: Conor
                     }
                 }))
                 setImageData("");

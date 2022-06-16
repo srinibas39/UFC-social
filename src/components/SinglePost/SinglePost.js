@@ -35,16 +35,15 @@ export const SinglePost = ({ post }) => {
 
 
     return <div className="user-post-container">
-        <img src={require("../../images/Conor.png")} alt="user" />
+        <img src={post.profileImg} alt="user" style={{ cursor: "pointer" }} onClick={() => navigate(`/profile/${post.userId}`)} />
         <div>
 
-            <h3 onClick={() => navigate(`/profile/${post.userId}`)}>{post.username}</h3>
+            <h3 style={{ cursor: "pointer" }} onClick={() => navigate(`/profile/${post.userId}`)}>{post.username}</h3>
             <small>{Date(post.createdAt)}</small>
             <p>{post.content}</p>
             {
                 post.image && <img src={post.image} alt="user" id="post-img" />
             }
-
             <div>
                 {
                     post.likes.likeCount > 0 ? <span className="material-symbols-rounded like-text like" onClick={() => (dispatch(loadLike({ token, id: post._id })), dispatch(dislikePosts({ id: post._id, type: "like" })))} >
