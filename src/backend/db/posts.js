@@ -60,7 +60,7 @@ export const posts = [
     profileImg: Brandon,
     userId: "15d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     likes: {
-      likeCount: 0,
+      likeCount: 3,
       likedBy: [],
       dislikedBy: [],
     },

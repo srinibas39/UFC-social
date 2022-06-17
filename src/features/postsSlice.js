@@ -17,7 +17,6 @@ const initialState = {
     loading: false,
     error: null,
     status: "idle",
-    dPosts: [],
     post: null,
     comments: [],
     postInput: "",
@@ -157,16 +156,7 @@ export const postsSlice = createSlice({
     name: "posts",
     initialState,
     reducers: {
-        dislikePosts: (state, action) => {
-            if (action.payload.type === "like") {
-                const id = state.dPosts.find((postId) => postId === action.payload.id);
-                state.dPosts.pop(id)
 
-            }
-            else {
-                state.dPosts.push(action.payload.id)
-            }
-        },
         setPostInput: (state, action) => {
             state.postInput = action.payload;
         },
@@ -314,6 +304,6 @@ export const postsSlice = createSlice({
     }
 })
 
-export const { dislikePosts, setPostInput, setImgInput, setEditPost, setSort, setShow } = postsSlice.actions;
+export const { setPostInput, setImgInput, setEditPost, setSort, setShow } = postsSlice.actions;
 
 export default postsSlice.reducer;

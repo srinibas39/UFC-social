@@ -1,2 +1,11 @@
 
 
+.likecount-pos{
+    position: relative;
+}
+
+.likecount{
+    font-size: 1rem;
+    position: absolute;
+    top: 6px;
+}

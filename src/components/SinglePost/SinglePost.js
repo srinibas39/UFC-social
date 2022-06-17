@@ -12,7 +12,6 @@ import "./SinglePost.css"
 export const SinglePost = ({ post }) => {
 
     const dispatch = useDispatch();
-    const { dPosts } = useSelector((state) => state.posts);
     const { token, user } = useSelector((state) => state.auth);
     const { bookmarks } = useSelector((state) => state.users)
     const navigate = useNavigate();
@@ -46,20 +45,20 @@ export const SinglePost = ({ post }) => {
             }
             <div>
                 {
-                    post.likes.likeCount > 0 ? <span className="material-symbols-rounded like-text like" onClick={() => (dispatch(loadLike({ token, id: post._id })), dispatch(dislikePosts({ id: post._id, type: "like" })))} >
-                        thumb_up <span style={{ fontSize: "1rem" }}>{post.likes.likeCount}</span>
+                    post.likes.likedBy.some((el) => el._id === user._id) ? <span className="material-symbols-rounded likecount-pos" onClick={() => (dispatch(loadLike({ token, id: post._id })))}  >
+                        thumb_up <span className="likecount">{post.likes.likeCount}</span>
                     </span> :
-                        <span className="material-symbols-outlined" onClick={() => (dispatch(loadLike({ token, id: post._id })), dispatch(dislikePosts({ id: post._id, type: "like" })))}>
-                            thumb_up
+                        <span className="material-symbols-outlined likecount-pos" onClick={() => (dispatch(loadLike({ token, id: post._id })))}>
+                            thumb_up {post.likes.likeCount > 0 && <span className="likecount">{post.likes.likeCount}</span>}
                         </span>
 
                 }
                 {
-                    dPosts.includes(post._id) ? <span className="material-symbols-rounded" >thumb_down</span> :
+                    post.likes.dislikedBy.some((el) => el._id === user._id) ? <span className="material-symbols-rounded"
+                        onClick={() => dispatch(loadDislike({ token, id: post._id }))}>thumb_down</span>
+                        :
                         <span className="material-symbols-outlined"
-                            onClick={() => (dispatch(loadDislike({ token, id: post._id })),
-                                post.likes.likeCount > 0 && dispatch(dislikePosts({ id: post._id, type: "dislike" })))} >
-                            thumb_down</span>
+                            onClick={() => dispatch(loadDislike({ token, id: post._id }))} >thumb_down</span>
 
 
                 }

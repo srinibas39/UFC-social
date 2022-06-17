@@ -8,17 +8,16 @@
   justify-content: space-evenly;
   overflow: auto;
   padding-left: 11rem;
-  
 }
 
 .suggestion {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-shadow: var(--box-shadow3);
-    margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: var(--box-shadow3);
+  margin: 0 1rem;
 }
 
 .suggestion img {
@@ -29,35 +28,28 @@
   padding-top: 6px;
   margin-bottom: 1rem;
 }
-.suggestion button{
-    width: 6rem;
-    border: none;
-    height: 2rem;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    cursor: pointer;
+.suggestion button {
+  width: 6rem;
+  border: none;
+  height: 2rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  cursor: pointer;
 }
 
-.suggestion button:hover{
-    background-color: var(--primary-color2);
+.suggestion button:hover {
+  background-color: var(--primary-color2);
 }
 
-
-
-div.suggestion-container::-webkit-scrollbar{
+div.suggestion-container::-webkit-scrollbar {
   width: 5px;
   height: 5px;
   cursor: pointer;
- 
 }
-div.suggestion-container::-webkit-scrollbar-track{
-   background-color: var(--secondary-color3);
-   
+div.suggestion-container::-webkit-scrollbar-track {
+  background-color: var(--secondary-color3);
 }
 
-div.suggestion-container::-webkit-scrollbar-thumb{
+div.suggestion-container::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
-  
 }
-
-
