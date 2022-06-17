@@ -15,11 +15,13 @@ export const Login = () => {
     const { user } = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
+    const location = useLocation();
+    
 
 
     useEffect(() => {
         if (user) {
-            navigate("/explore");
+            navigate(`${location?.state?.from?.pathname}`)
         }
     }, [user])
 

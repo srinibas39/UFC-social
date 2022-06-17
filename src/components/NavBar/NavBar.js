@@ -25,7 +25,7 @@ export const Navbar = () => {
         </div>
         <div className="navBar-content">
 
-            <div onClick={() => user ? navigate(`/profile/${user._id}`) : navigate("/login")}>
+            <div onClick={() => navigate(`/profile/${user._id}`)}>
 
                 <span className="material-icons-outlined"> person </span>
             </div>
