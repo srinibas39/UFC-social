@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { deletePost, dislikePosts, loadDislike, loadLike, setEditPost, setImgInput, setPostInput, setShow } from "../../features/postsSlice"
-import { addBookmark, removeBookmark } from "../../features/UserSlice";
+import { addBookmark, removeBookmark, setBookmarks, setUnbookmark } from "../../features/UserSlice";
 import "./SinglePost.css"
 
 
@@ -24,12 +24,12 @@ export const SinglePost = ({ post }) => {
 
     }
 
-    const handleBookmark = () => {
-        dispatch(addBookmark({ token, postId: post._id }))
+    const handleBookmark = (post) => {
+        dispatch(setBookmarks(post))
     }
 
-    const handleUnbookmark = () => {
-        dispatch(removeBookmark({ token, postId: post._id }))
+    const handleUnbookmark = (post) => {
+        dispatch(setUnbookmark(post))
     }
 
 
@@ -67,9 +67,9 @@ export const SinglePost = ({ post }) => {
                     chat_bubble
                 </span>
                 {
-                    bookmarks.some((el) => el._id === post._id) ? <span className="material-icons-outlined" onClick={handleUnbookmark}>
+                    bookmarks.some((el) => el._id === post._id) ? <span className="material-icons-outlined" onClick={() => handleUnbookmark(post)}>
                         bookmark
-                    </span> : <span className="material-symbols-outlined" onClick={handleBookmark}>
+                    </span> : <span className="material-symbols-outlined" onClick={() => handleBookmark(post)}>
                         bookmark
                     </span>
                 }

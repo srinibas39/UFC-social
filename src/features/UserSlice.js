@@ -72,8 +72,6 @@ export const editUser = createAsyncThunk("users/editUse",
 export const addBookmark = createAsyncThunk("users/addBookmark",
     async ({ token, postId }, thunkAPI) => {
         try {
-            console.log(token);
-            console.log(postId);
             const res = await AddBookmark(token, postId);
             return res.data.bookmarks;
         }
@@ -95,6 +93,17 @@ export const removeBookmark = createAsyncThunk("users/removeBookmark",
 export const userSlice = createSlice({
     initialState,
     name: "users",
+    reducers: {
+        setBookmarks: (state, action) => {
+            state.bookmarks.push(action.payload);
+        },
+        setUnbookmark: (state, action) => {
+           
+          const book=state.bookmarks.find(post => post._id === action.payload._id);
+            
+            state.bookmarks.pop(book)
+        }
+    },
 
     extraReducers: {
         [getAllUsers.pending]: (state) => {
@@ -179,6 +188,7 @@ export const userSlice = createSlice({
 })
 
 
+export const { setBookmarks, setUnbookmark } = userSlice.actions;
 
 export default userSlice.reducer;
 
