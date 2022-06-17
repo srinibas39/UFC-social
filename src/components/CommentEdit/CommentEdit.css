@@ -1,0 +1,14 @@
+.comment-edit-container{
+    height: 100vh;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    width: 100vw;
+    z-index: 1;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -9,6 +9,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { Error } from "./components/Error/Error";
 import { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 import { useSelector } from "react-redux";
+import { CommentEdit } from "./components/CommentEdit/CommentEdit";
 
 
 export const App = () => {
@@ -22,8 +23,6 @@ export const App = () => {
     <Route path="/comment/:postId" element={<RequiresAuth token={token}><CommentPage /></RequiresAuth>} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/signup" element={<SignupPage />} />
-
-
   </Routes>
 
 
