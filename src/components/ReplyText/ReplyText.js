@@ -1,21 +1,21 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { addComment, editComment, replyComment } from "../../features/postsSlice";
+import { editComment, setReplyEdit, setShowReplyEdit } from "../../features/postsSlice";
 import { v4 as uuid } from "uuid";
 import "./ReplyText.css"
-export const ReplyText = ({ setReply, postId, commentId }) => {
+export const ReplyText = ({ setReply, postId, comment }) => {
     const [replyText, setReplyText] = useState("");
     const dispatch = useDispatch();
-    const { comments } = useSelector((state) => state.posts)
+    const { comments, showReplyEdit, replyEdit } = useSelector((state) => state.posts)
     const { token, user } = useSelector((state) => state.auth)
 
 
     const handleReply = () => {
         let commentReply = comments.comments
         for (let i = 0; i < commentReply.length; i++) {
-            if (commentReply[i]._id === commentId) {
+            if (commentReply[i]._id === comment._id) {
                 const commentChild = [...commentReply[i].children, { ...commentReply[i], text: replyText, username: user.username, _id: uuid() }];
-                dispatch(editComment({ postId, commentId, commentData: { children: commentChild }, token }));
+                dispatch(editComment({ postId, commentId: comment._id, commentData: { children: commentChild }, token }));
 
             }
 
@@ -23,6 +23,31 @@ export const ReplyText = ({ setReply, postId, commentId }) => {
 
         setReplyText("");
         setReply(false);
+    }
+
+    const handleReplyEdit = () => {
+        let allCommentChildren = comment.children;
+        const newChildren = [];
+        for (let i = 0; i < allCommentChildren.length; i++) {
+            if (allCommentChildren[i]._id === replyEdit._id) {
+                newChildren.push({ ...replyEdit, text: replyText })
+            }
+            else {
+                newChildren.push(allCommentChildren[i])
+            }
+        }
+        dispatch(editComment({ postId, commentId: comment._id, commentData: { children: newChildren }, token }));
+        dispatch(setShowReplyEdit(false));
+        dispatch(setReplyEdit({}))
+
+
+    }
+    const handleCancel = () => {
+        setReply(false)
+        if (showReplyEdit) {
+            dispatch(setShowReplyEdit(false));
+            dispatch(setReplyEdit({}))
+        }
     }
     return <div className="reply-text-container">
         <div className="input-text">
@@ -33,8 +58,12 @@ export const ReplyText = ({ setReply, postId, commentId }) => {
                 <input placeholder="Type here to post" value={replyText} onChange={(e) => setReplyText(e.target.value)} />
                 <div className="input-text-option">
                     <div className="comment-text-buttons">
-                        <button onClick={() => handleReply()}>POST</button>
-                        <button style={{ marginLeft: "10px" }} onClick={() => setReply(false)}>CANCEL</button>
+                        {
+                            !showReplyEdit ? <button onClick={() => handleReply()}>POST</button>
+                                : <button onClick={() => handleReplyEdit()}>UPDATE</button>
+                        }
+
+                        <button style={{ marginLeft: "10px" }} onClick={handleCancel}>CANCEL</button>
                     </div>
                 </div>
             </div>

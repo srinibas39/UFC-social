@@ -29,28 +29,7 @@ export const posts = [
     username: "sriyasri khuntia",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    comments: [
-      {
-        _id: "4d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "shubham soni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-      {
-        _id: "5d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "soham shah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-    ],
+    comments: [],
   },
   {
     _id: "5d3ef9d4-6a56-4dae-a155-3b4a7554242c",
@@ -67,28 +46,7 @@ export const posts = [
 
     username: "ayush panda",
 
-    comments: [
-      {
-        _id: "7d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "subham soni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-      {
-        _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "soham shah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-    ],
+    comments: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -107,28 +65,7 @@ export const posts = [
 
     username: "subham soni",
 
-    comments: [
-      {
-        _id: "7d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "subham soni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-      {
-        _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "soham shah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-    ],
+    comments: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -147,28 +84,7 @@ export const posts = [
 
     username: "bharat mohanty",
 
-    comments: [
-      {
-        _id: "7d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "subham soni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-      {
-        _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "soham shah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-    ],
+    comments: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -187,28 +103,7 @@ export const posts = [
 
     username: "adarsh mohanty",
 
-    comments: [
-      {
-        _id: "7d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "subham soni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-      {
-        _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
-        username: "soham shah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-        children: []
-      },
-    ],
+    comments: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

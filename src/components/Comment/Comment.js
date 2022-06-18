@@ -1,6 +1,6 @@
 
-import { useSelector , useDispatch} from "react-redux"
-import {  setCommentEdit, setShowComment } from "../../features/postsSlice";
+import { useSelector, useDispatch } from "react-redux"
+import { setCommentEdit, setReplyEdit, setShowComment, setShowReplyEdit } from "../../features/postsSlice";
 import { Reply } from "../Reply/Reply"
 import "./Comment.css"
 
@@ -9,12 +9,16 @@ export const Comment = ({ comment, postId }) => {
 
 
     const { user } = useSelector((state) => state.auth);
-    
+
     const dispatch = useDispatch();
 
     const handleCommentEdit = () => {
         dispatch(setShowComment(true));
         dispatch(setCommentEdit(comment));
+    }
+    const handleReplyEdit = (com) => {
+        dispatch(setShowReplyEdit(true));
+        dispatch(setReplyEdit(com));
     }
 
     const nestedComment = (comment.children || []).map((com) => {
@@ -26,7 +30,7 @@ export const Comment = ({ comment, postId }) => {
                     <p>{com.text}</p>
                     <div className="comment-option">
 
-                        <span className="material-symbols-outlined">
+                        <span className="material-symbols-outlined" onClick={() => handleReplyEdit(com)}>
                             edit
                         </span>
                         <span className="material-symbols-outlined margin">
@@ -57,7 +61,7 @@ export const Comment = ({ comment, postId }) => {
                 }
 
 
-                <Reply postId={postId} commentId={comment._id} />
+                <Reply postId={postId} comment={comment} />
 
             </div>
         </div>

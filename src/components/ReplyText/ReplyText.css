@@ -1,11 +1,11 @@
-.reply-text-container{
-        width: 100%;
-        margin: auto;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        display: flex;
+.reply-text-container {
+  width: 40rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
 }
 
-.reply-text-container input{
-    box-shadow: var(--box-shadow3);
+.reply-text-container input {
+  box-shadow: var(--box-shadow3);
 }

@@ -26,8 +26,9 @@ const initialState = {
     userPosts: [],
     show: false,
     showComment: false,
-    commentEdit: {}
-
+    commentEdit: {},
+    showReplyEdit: false,
+    replyEdit: {}
 }
 
 
@@ -179,7 +180,14 @@ export const postsSlice = createSlice({
         },
         setCommentEdit: (state, action) => {
             state.commentEdit = action.payload;
+        },
+        setShowReplyEdit: (state, action) => {
+            state.showReplyEdit = action.payload;
+        },
+        setReplyEdit: (state, action) => {
+            state.replyEdit = action.payload
         }
+
 
     },
     extraReducers: {
@@ -259,7 +267,6 @@ export const postsSlice = createSlice({
         [editComment.fulfilled]: (state, action) => {
             state.loading = false;
             state.comments = action.payload;
-            console.log(action.payload)
         },
         [editComment.rejected]: (state, action) => {
             state.loading = false;
@@ -313,6 +320,6 @@ export const postsSlice = createSlice({
     }
 })
 
-export const { setPostInput, setImgInput, setEditPost, setSort, setShow, setShowComment, setCommentEdit } = postsSlice.actions;
+export const { setPostInput, setImgInput, setEditPost, setSort, setShow, setShowComment, setCommentEdit, setShowReplyEdit, setReplyEdit } = postsSlice.actions;
 
 export default postsSlice.reducer;
