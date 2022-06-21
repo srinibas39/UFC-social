@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit"
 import { AddComment } from "../services/AddComment";
 import { AddPost } from "../services/AddPost"
+import { DeleteComment } from "../services/DeleteComment";
 import { DeletePost } from "../services/DeletePost";
 import { DislikePost } from "../services/DislikePost";
 import { EditComment } from "../services/EditComment";
@@ -150,6 +151,16 @@ export const getAllPostUser = createAsyncThunk("posts/getAllPostUser",
 
             const res = await GetAllPostUser(username);
             return res.data.posts;
+        }
+        catch (err) {
+            return thunkAPI.rejectWithValue(err.message)
+        }
+    })
+export const deleteComment = createAsyncThunk("posts/deleteComment",
+    async ({ token, postId, commentId }, thunkAPI) => {
+        try {
+            const res = await DeleteComment({ token, postId, commentId });
+            return res.data;
         }
         catch (err) {
             return thunkAPI.rejectWithValue(err.message)
@@ -316,6 +327,17 @@ export const postsSlice = createSlice({
         [getAllPostUser.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload.posts;
+        },
+        [deleteComment.pending]: (state) => {
+            state.loading = true;
+        },
+        [deleteComment.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.comments = action.payload;
+        },
+        [deleteComment.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         }
     }
 })

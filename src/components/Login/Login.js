@@ -16,12 +16,18 @@ export const Login = () => {
 
     const dispatch = useDispatch();
     const location = useLocation();
-    
 
 
+    console.log(location);
     useEffect(() => {
         if (user) {
-            navigate(`${location?.state?.from?.pathname}`)
+            if (!location?.state) {
+                navigate("/explore")
+            }
+            else {
+
+                navigate(`${location?.state?.from?.pathname}`)
+            }
         }
     }, [user])
 
