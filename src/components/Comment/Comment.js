@@ -1,6 +1,6 @@
 
 import { useSelector, useDispatch } from "react-redux"
-import { deleteComment, setCommentEdit, setReplyEdit, setShowComment, setShowReplyEdit } from "../../features/postsSlice";
+import { deleteComment, editComment, setCommentEdit, setReplyEdit, setShowComment, setShowReplyEdit } from "../../features/postsSlice";
 import { Reply } from "../Reply/Reply"
 import "./Comment.css"
 
@@ -25,6 +25,14 @@ export const Comment = ({ comment, postId }) => {
         dispatch(deleteComment({ token, postId, commentId: comment._id }))
     }
 
+    const handleReplyDelete = (com) => {
+
+        const commentChildren = comment.children;
+        const newChildren=commentChildren.filter((el)=>el._id!==com._id);
+        dispatch(editComment({ postId, commentId: comment._id, commentData: { children: newChildren }, token }));
+
+    }
+
     const nestedComment = (comment.children || []).map((com) => {
         return <div className="comment-container" key={com._id} style={{ display: "flex", marginLeft: "4rem" }}>
             <div className="comment">
@@ -37,7 +45,7 @@ export const Comment = ({ comment, postId }) => {
                         <span className="material-symbols-outlined" onClick={() => handleReplyEdit(com)}>
                             edit
                         </span>
-                        <span className="material-symbols-outlined margin">
+                        <span className="material-symbols-outlined margin" onClick={() => handleReplyDelete(com)}>
                             delete
                         </span>
                     </div>
