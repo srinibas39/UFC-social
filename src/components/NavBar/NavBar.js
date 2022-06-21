@@ -31,13 +31,13 @@ export const Navbar = () => {
             </div>
             <div onClick={() => navigate("/explore")}>
 
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     explore
                 </span>
             </div>
             <div onClick={() => navigate("#")}>
 
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     dark_mode
                 </span>
             </div>

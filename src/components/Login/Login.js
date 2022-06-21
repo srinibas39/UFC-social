@@ -17,8 +17,6 @@ export const Login = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
-
-    console.log(location);
     useEffect(() => {
         if (user) {
             if (!location?.state) {
