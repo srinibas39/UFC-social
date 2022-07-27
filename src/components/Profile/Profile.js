@@ -40,11 +40,12 @@ export const Profile = () => {
         dispatch(getSingleUser(userId));
     }
 
+  
 
     return <>
         {
             userId === auth.user._id ? <div className="profile-container">
-                <img src={require("../../images/Conor.png")} alt="user" />
+                <img src={user.image} alt="user" />
                 <h2>{user.firstName + " " + user.lastName}</h2>
                 <small>@{user.firstName}</small>
                 <div className="edit-buttons">
@@ -70,7 +71,7 @@ export const Profile = () => {
             </div>
                 :
                 <div className="profile-container">
-                    <img src={require("../../images/Conor.png")} alt="user" />
+                    <img src={user.image} alt="user" />
                     <h2>{user.firstName + " " + user.lastName}</h2>
                     <small>@{user.firstName}</small>
                     <div className="edit-buttons">

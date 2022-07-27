@@ -7,7 +7,6 @@ import "./Comment.css"
 export const Comment = ({ comment, postId }) => {
 
 
-
     const { user, token } = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
