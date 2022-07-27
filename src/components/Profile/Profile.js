@@ -14,6 +14,7 @@ export const Profile = () => {
     const { user } = useSelector((state) => state.users);
 
     const auth = useSelector((state) => state.auth);
+    const { userPosts } = useSelector((state) => state.posts)
 
     const { userId } = useParams();
 
@@ -40,7 +41,7 @@ export const Profile = () => {
         dispatch(getSingleUser(userId));
     }
 
-  
+
 
     return <>
         {
@@ -60,7 +61,7 @@ export const Profile = () => {
                         <div>Following</div>
                     </div>
                     <div>
-                        <h2>0</h2>
+                        <h2>{userPosts.length}</h2>
                         <div>Posts</div>
                     </div>
                     <div>
@@ -90,7 +91,7 @@ export const Profile = () => {
                             <div>Following</div>
                         </div>
                         <div>
-                            <h2>0</h2>
+                            <h2>{userPosts.length}</h2>
                             <div>Posts</div>
                         </div>
                         <div>
