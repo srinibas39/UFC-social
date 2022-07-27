@@ -77,7 +77,7 @@ export const SinglePost = ({ post }) => {
 
 
                 {
-                    post.username === user.username && <span className="material-symbols-outlined" onClick={handlePostEdit}>
+                    post.username.toLowerCase() === user.username.toLowerCase() && <span className="material-symbols-outlined" onClick={handlePostEdit}>
                         edit
                     </span>
                 }
@@ -86,7 +86,7 @@ export const SinglePost = ({ post }) => {
                     share
                 </span>
                 {
-                    post.username === user.username && <span className="material-symbols-outlined" onClick={() => dispatch(deletePost({ postId: post._id, token: token }))}>
+                    post.username.toLowerCase() === user.username.toLowerCase() && <span className="material-symbols-outlined" onClick={() => dispatch(deletePost({ postId: post._id, token: token }))}>
                         delete
                     </span>
                 }

@@ -10,6 +10,7 @@ import Brandon from "../../images/Brandon Moreno.png"
 import Colby from "../../images/Colby Covington.png"
 import izzy from "../../images/izz.png"
 import Khabib from "../../images/Khabib.png"
+import Conor from "../../images/Conor.png"
 
 
 export const posts = [
@@ -107,7 +108,5 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
-
-
 
 ];
