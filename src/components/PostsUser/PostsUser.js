@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { SinglePost } from "../SinglePost/SinglePost";
 
 export const PostsUser = () => {
-    const dispatch = useDispatch();
+    
     const { userPosts, sort } = useSelector((state) => state.posts);
     const { bookmarks } = useSelector((state) => state.users);
 

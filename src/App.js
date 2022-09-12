@@ -8,12 +8,18 @@ import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
 import { Error } from "./components/Error/Error";
 import { RequiresAuth } from "./RequiresAuth/RequiresAuth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CommentEdit } from "./components/CommentEdit/CommentEdit";
+import { useEffect } from "react";
+import { getAllUsers } from "./features/UserSlice";
 
 
 export const App = () => {
   const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUsers())
+  }, [])
   return <Routes>
 
     <Route path="*" element={<Error />} />
