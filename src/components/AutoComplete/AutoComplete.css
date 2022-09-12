@@ -4,6 +4,12 @@
   cursor: pointer;
 }
 
+.auto-no-input li{
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
 .search-con {
   margin: 1rem;
   box-shadow: var(--box-shadow2);
@@ -37,3 +43,20 @@
   padding: 5px;
   margin: 5px 0;
 }
+
+.auto-input li img{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  margin: 0 10px;
+}
+
+.auto-input li{
+  display: flex;
+  align-items: center;
+  color: var(--primary-color);
+
+}
+
+

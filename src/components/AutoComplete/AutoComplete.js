@@ -1,74 +1,69 @@
 import { useState } from "react"
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
 import "./AutoComplete.css"
 
 export const AutoComplete = () => {
-
-   
-    // const suggestion = prodState.suggestion;
-    const [filteredSuggestionList, setFilteredSuggestionList] = useState([]);
+    const [filteredSuggestion, setFilteredSuggestion] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
     const [input, setInput] = useState("");
+    const [suggestion, setSuggestion] = useState([])
+    const { users } = useSelector((state) => state.users);
+    const navigate = useNavigate();
 
- 
-    // const navigate = useNavigate();
 
-    // const handleChange = (e) => {
-    //     const userInput = e.target.value;
-    //     const unlinked = suggestion.filter((el) => el.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
+    useEffect(() => {
+        setSuggestion(users.map((el) => ({ name: el.firstName + " " + el.lastName, image: el.image, _id: el._id })))
+    }, [users])
 
-    //     setFilteredSuggestionList(unlinked);
-    //     setInput(userInput);
-    //     setShowSuggestion(true);
-    // }
-    // const handleClick = (e) => {
-    //     setFilteredSuggestionList([])
-    //     setInput(e.target.innerText);
-    //     setShowSuggestion(false);
-    //     prodDispatch({ type: "SEARCH_TEXT", payload: e.target.innerText });
-    //     navigate("/search")
-    // }
-    // const handleKeyDown = (e) => {
 
-    //     if (e.keyCode === 13 && input.trim().length) {
-    //         prodDispatch({ type: "SEARCH_TEXT", payload: e.target.value });
-    //         navigate("/search")
-    //     }
+    const handleChange = (e) => {
+        setInput(e.target.value);
+        setFilteredSuggestion(suggestion.filter((el) => el.name.toLowerCase().indexOf(input.toLowerCase()) > -1));
+        setShowSuggestion(true);
+       
+    }
 
-    // }
+    const handleClick = (e) => {
+        setInput(e.target.innerText);
+        setFilteredSuggestion([]);
+        setShowSuggestion(false);
 
-    // const handleSearch = (e) => {
-    //     if (input.trim().length) {
+        const [user]=filteredSuggestion.filter((el)=>el.name===e.target.innerText);
+       
+        navigate(`/profile/${user._id}`)
+    }
 
-    //         prodDispatch({ type: "SEARCH_TEXT", payload: input });
-    //         navigate("/search")
-    //     }
-    // }
+    const SuggestionList = () => {
+        return <>
+            {
+                filteredSuggestion.length ? <ul className="auto-input">
+                    {
+                        filteredSuggestion.map((user, idx) => {
+                            return <li key={idx} onClick={handleClick}>
+                                <img src={user.image}/>
+                                <p>{user.name}</p>
+                                </li>
+                        })
+                    }
+                </ul> :
+                    <ul className="auto-no-input">
+                        <li>Sorry, No search results for {input}</li>
+                    </ul>
+
+
+            }
+        </>
+    }
+
+
 
     return <div className="search-con">
-        <input type="search" 
-            //  value={input} 
-            // onChange={(e) => handleChange(e)}
-            // onKeyDown={(e) => handleKeyDown(e)}
-            placeholder={"Type To search"} />
-
-        {/* <span className="material-icons-outlined" onClick={() => handleSearch()}> search </span>
-        {
-            showSuggestion && input && <>
-                {
-                    filteredSuggestionList.length ? <ul className="auto-input">
-                        {
-                            filteredSuggestionList.map((el, idx) => {
-                                return <li key={idx} onClick={(e) => handleClick(e)}>{el}</li>
-                            })
-                        }
-                    </ul> : <ul className="auto-input"><li><em>Sorry, No search results for {input}</em></li></ul>
-                }
-            </>
-        } */}
-
+        <input type="search" placeholder={"Type To search"} value={input} onChange={handleChange} />
+        <span className="material-icons-outlined"> search </span>
+        {showSuggestion && input && <SuggestionList />}
     </div>
 }
