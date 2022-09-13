@@ -1,8 +1,7 @@
 .input-text-container {
   padding: 1rem;
-  width: 40rem;
   margin: auto;
-  height: 12rem;
+  
   box-shadow: var(--box-shadow2);
   background-color: var(--secondary-color);
 }
@@ -116,4 +115,11 @@
     top: 42px;
     color: var(--primary-color);
     cursor: pointer;
+}
+
+@media (min-width:40rem){
+  .input-text-container{
+    height: 12rem;
+    width:40rem
+  }
 }

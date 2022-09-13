@@ -1,5 +1,5 @@
 .reply-text-container {
-  width: 40rem;
+  
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -8,4 +8,11 @@
 
 .reply-text-container input {
   box-shadow: var(--box-shadow3);
+}
+
+
+@media (min-width:40rem){
+  .reply-text-container{
+    width:40rem
+  }
 }

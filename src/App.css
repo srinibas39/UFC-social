@@ -19,12 +19,17 @@
 }
 
 ::-webkit-scrollbar{
-  width: 10px;
+  width: 6px;
+  
 }
 ::-webkit-scrollbar-track{
-   background-color: var(--secondary-color3)
+   background-color: var(--secondary-color3);
+   cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb{
   background-color: var(--primary-color);
+ 
 }
+
+

@@ -1,11 +1,11 @@
 .user-post-container {
   padding: 1rem;
-  width: 40rem;
   margin: auto;
   box-shadow: var(--box-shadow2);
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: flex;
+  font-size: 12px;
 }
 
 .user-post-container img {
@@ -52,4 +52,11 @@
 }
 .like{
     color: var(--primary-color);
+}
+
+@media (min-width:40rem){
+  .user-post-container{
+    width:40rem;
+    font-size: 1rem;
+  }
 }

@@ -1,12 +1,10 @@
 .comment {
   padding: 1rem;
-  width: 40rem;
-  margin: auto;
   box-shadow: var(--box-shadow2);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
   display: flex;
   border-top: 3px solid var(--primary-color);
+  font-size: 12px;
 }
 
 .comment img {
@@ -26,12 +24,20 @@
 }
 
 .comment-option {
-    display: flex;
-    color: var(--primary-color);
-    cursor: pointer;
-    margin: 1rem 0;
+  display: flex;
+  color: var(--primary-color);
+  cursor: pointer;
+  margin: 1rem 0;
 }
 
-.margin{
-    margin:0 1rem;
+.margin {
+  margin: 0 1rem;
+}
+
+@media (min-width: 40rem) {
+  .comment {
+    width:40rem;
+    font-size: 1rem;
+    margin: auto;
+  }
 }

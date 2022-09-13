@@ -1,13 +1,12 @@
 .suggestion-container {
   display: flex;
   padding: 1rem;
-  width: 40rem;
   box-shadow: var(--box-shadow2);
   margin: auto;
   margin-top: 1rem;
-  justify-content: space-evenly;
+  justify-content:left;
   overflow: auto;
-  padding-left: 11rem;
+  
 }
 
 .suggestion {
@@ -15,7 +14,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
   box-shadow: var(--box-shadow3);
   margin: 0 1rem;
 }
@@ -52,4 +50,13 @@ div.suggestion-container::-webkit-scrollbar-track {
 
 div.suggestion-container::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
+}
+
+@media (min-width: 40rem) {
+  .suggestion-container {
+    width: 40rem;
+  }
+  .suggestion{
+    padding:1rem;
+  }
 }

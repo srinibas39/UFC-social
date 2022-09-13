@@ -1,13 +1,13 @@
 
 .comment-text-container{
     padding: 1rem;
-    width: 40rem;
     margin: auto;
     box-shadow: var(--box-shadow2);
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex;
     background-color: var(--secondary-color);
+    font-size: 12px;
 }
 
 .comment-text-container input{
@@ -17,4 +17,11 @@
     outline: none;
     border: none;
     box-shadow: var(--box-shadow3);
+}
+
+@media (min-width:40rem){
+    .comment-text-container{
+        width:40rem;
+        font-size: 1rem;
+    }
 }

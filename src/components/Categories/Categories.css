@@ -1,7 +1,7 @@
 .categories {
   display: flex;
   padding: 1rem;
-  width: 40rem;
+
   box-shadow: var(--box-shadow2);
   margin: auto;
   margin-top: 1rem;
@@ -24,6 +24,12 @@
   color: var(--primary-color2);
 }
 
-.primary-color{
-  color:var(--primary-color)
+.primary-color {
+  color: var(--primary-color);
+}
+
+@media (min-width: 40rem) {
+  .categories {
+    width: 40rem;
+  }
 }

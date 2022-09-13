@@ -82,9 +82,6 @@ export const SinglePost = ({ post }) => {
                     </span>
                 }
 
-                <span className="material-symbols-outlined">
-                    share
-                </span>
                 {
                     post.username.toLowerCase() === user.username.toLowerCase() && <span className="material-symbols-outlined" onClick={() => dispatch(deletePost({ postId: post._id, token: token }))}>
                         delete
