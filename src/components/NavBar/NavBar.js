@@ -14,9 +14,9 @@ export const Navbar = () => {
         dispatch(setMode())
     }
 
-    
 
-    return <div className="navBar" id={mode?"dark-mode":""}>
+
+    return <div className="navBar" id={mode ? "dark-mode" : ""}>
         <div className="navBar-img" onClick={() => navigate("/")}>
 
             <svg
@@ -35,27 +35,27 @@ export const Navbar = () => {
         </div>
         <div className="navBar-content">
 
-            <div onClick={() => navigate(`/profile/${user._id}`)}>
+            <div onClick={() => user ? navigate(`/profile/${user._id}`): navigate(`/login`)}>
 
-                <span className="material-icons-outlined"> person </span>
-            </div>
-            <div onClick={() => navigate("/explore")}>
+            <span className="material-icons-outlined"> person </span>
+        </div>
+        <div onClick={() => navigate("/explore")}>
 
-                <span className="material-symbols-outlined">
-                    explore
-                </span>
-            </div>
-            <div onClick={handleMode}>
-                {
-                    mode ? <span className="material-symbols-outlined">
-                        light_mode
-                    </span> :
-                        <span className="material-symbols-outlined">
-                            dark_mode
-                        </span>
-                }
+            <span className="material-symbols-outlined">
+                explore
+            </span>
+        </div>
+        <div onClick={handleMode}>
+            {
+                mode ? <span className="material-symbols-outlined">
+                    light_mode
+                </span> :
+                    <span className="material-symbols-outlined">
+                        dark_mode
+                    </span>
+            }
 
-            </div>
         </div>
     </div>
+    </div >
 }

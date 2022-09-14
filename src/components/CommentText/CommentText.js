@@ -7,7 +7,7 @@ import { addComment, editComment, setCommentEdit, setShowComment } from "../../f
 export const CommentText = ({ postId }) => {
     const [text, setText] = useState("");
     const dispatch = useDispatch();
-    const { token } = useSelector((state) => state.auth);
+    const { token,user } = useSelector((state) => state.auth);
     const { commentEdit, showComment } = useSelector((state) => state.posts);
     const { mode } = useSelector((state) => state.mode)
     
@@ -28,7 +28,7 @@ export const CommentText = ({ postId }) => {
     return <div className="comment-text-container" id={mode ? "dark-mode" : ""}>
         <div className="input-text">
 
-            <img src={require("../../images/Conor.png")} alt="user" />
+            <img src={user.image} alt="user" />
 
             <div className="input-text-text">
                 <input placeholder="Type here to post" value={text}

@@ -9,7 +9,7 @@ export const EditProfile = ({ show, setShow }) => {
     profile: "",
   });
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  const { token,user } = useSelector((state) => state.auth);
   const { mode } = useSelector((state) => state.mode)
 
   const handleUpdate = () => {
@@ -31,15 +31,15 @@ export const EditProfile = ({ show, setShow }) => {
 
             <div className="avatar">
               <h3>Avatar</h3>
-              <img src={require("../../images/Conor.png")} alt="user" />
+              <img src={user.image} alt="user" />
             </div>
             <div className="name">
               <h3>Name</h3>
-              <p>Adarsh Ballika</p>
+              <p>{user.username}</p>
             </div>
             <div className="username">
               <h3>User Name</h3>
-              <p>@AdarshBallika</p>
+              <p>@{user.username}</p>
             </div>
             <div className="website">
               <h3>Website</h3>

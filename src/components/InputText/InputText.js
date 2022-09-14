@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editPost, loadEditPost, loadPosts, setEditPost, setImgInput, setPostInput, setShow } from "../../features/postsSlice";
 import "./InputText.css";
 import Conor from "../../images/Conor.png"
+import { useNavigate } from "react-router-dom";
 
 
 export const InputText = ({ show }) => {
@@ -15,7 +16,8 @@ export const InputText = ({ show }) => {
     const { postInput, imgInput, editPost } = useSelector((state) => state.posts);
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const { mode } = useSelector((state) => state.mode)
+    const { mode } = useSelector((state) => state.mode);
+    const navigate = useNavigate()
 
     const inputRef = useRef(null);
     const handleImage = () => {
@@ -66,7 +68,7 @@ export const InputText = ({ show }) => {
             <div className="input-text-container" style={{ height: imageData && "20rem" }} onClick={(e) => e.stopPropagation()} id={mode ? "dark-mode" : ""} >
                 <div className="input-text">
 
-                    <img src={require("../../images/Conor.png")} alt="user" />
+                    <img src={user.image} alt="user" onClick={() => navigate(`/profile/${user._id}`)} />
 
                     <div className="input-text-text">
                         <div className="input-text-text-div" onMouseEnter={() => setEmoji(false)}>

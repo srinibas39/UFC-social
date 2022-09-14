@@ -72,7 +72,7 @@ export const Profile = () => {
                 </div>
             </div>
                 :
-                <div className="profile-container">
+                <div className="profile-container" id={mode ? "dark-mode" : ""}>
                     <img src={user.image} alt="user" />
                     <h2>{user.firstName + " " + user.lastName}</h2>
                     <small>@{user.firstName}</small>

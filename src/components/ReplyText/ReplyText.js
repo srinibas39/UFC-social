@@ -52,7 +52,7 @@ export const ReplyText = ({ setReply, postId, comment }) => {
     return <div className="reply-text-container">
         <div className="input-text">
 
-            <img src={require("../../images/Conor.png")} alt="user" />
+            <img src={user.image} alt="user" />
 
             <div className="input-text-text">
                 <input placeholder="Type here to post" value={replyText} onChange={(e) => setReplyText(e.target.value)} />

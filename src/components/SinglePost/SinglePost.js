@@ -35,13 +35,14 @@ export const SinglePost = ({ post }) => {
 
 
     return <div className="user-post-container" id={mode ? "dark-mode" : ""}>
-        <img src={post.profileImg} alt="user" style={{ cursor: "pointer" }} onClick={() => navigate(`/profile/${post.userId}`)} />
+        <img src={user._id === post.userId ? user.image : post.profileImg} alt="user" style={{ cursor: "pointer" }} onClick={() => navigate(`/profile/${post.userId}`)} />
         <div>
 
             <h3 style={{ cursor: "pointer" }} onClick={() => navigate(`/profile/${post.userId}`)}>{post.username}</h3>
             <small>{Date(post.createdAt)}</small>
             <p>{post.content}</p>
             {
+
                 post.image && <img src={post.image} alt="user" id="post-img" />
             }
             <div>
