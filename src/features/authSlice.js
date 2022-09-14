@@ -20,9 +20,9 @@ export const loadLogin = createAsyncThunk("auth/loadLogin",
         }
     })
 export const loadSignup = createAsyncThunk("auth/loadSignup",
-    async ({ firstName, lastName, username, password }, thunkAPI) => {
+    async ({ firstName, lastName, username, password,image}, thunkAPI) => {
         try {
-            const res = await SignupService({ firstName, lastName, username, password });
+            const res = await SignupService({ firstName, lastName, username, password,image });
             return res.data;
 
         }
@@ -67,12 +67,14 @@ export const authSlice = createSlice({
         },
         [loadSignup.fulfilled]: (state, action) => {
             state.loading = false;
-            state.user = action.payload.foundUser;
+            state.user = action.payload.createdUser;
             state.token = action.payload.encodedToken;
             localStorage.setItem("login", JSON.stringify({
                 token: action.payload.encodedToken,
                 user: action.payload.foundUser
             }))
+           
+          
 
         },
         [loadSignup.rejected]: (state, action) => {

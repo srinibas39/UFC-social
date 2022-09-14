@@ -6,7 +6,7 @@
 }
 
 .signup {
-  height: 26rem;
+  min-height: 32rem;
   width: 26rem;
   padding: 10px;
   display: flex;
@@ -16,6 +16,7 @@
 }
 .signup h2 {
   text-align: center;
+  margin: 10px;
 }
 
 .firstname-container {
@@ -25,6 +26,7 @@
 .firstname-container input {
   height: 30px;
   padding: 10px;
+  outline: none;
 }
 
 .lastname-container {
@@ -34,6 +36,7 @@
 .lastname-container input {
   height: 30px;
   padding: 10px;
+  outline: none;
 }
 
 .btn-register {
@@ -45,6 +48,7 @@
   border: none;
   color: #fff;
   cursor: pointer;
+  margin: 4px;
 }
 .btn-register:hover {
   background-color: var(--primary-color2);
@@ -58,4 +62,33 @@
 .terms input {
   margin-right: 5px;
   cursor: pointer;
+}
+
+.image-container {
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+  position: relative;
+  margin: auto;
+}
+
+.image-container img {
+  height: 100%;
+  width: 100%;
+}
+.image-container input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.image-container small {
+  position: absolute;
+  top: 71px;
+  left: 27px;
+  color: var(--primary-color);
 }
