@@ -15,6 +15,7 @@ export const SinglePost = ({ post }) => {
     const { token, user } = useSelector((state) => state.auth);
     const { bookmarks } = useSelector((state) => state.users)
     const navigate = useNavigate();
+    const { mode } = useSelector((state) => state.mode)
 
     const handlePostEdit = () => {
         dispatch(setShow(true));
@@ -33,7 +34,7 @@ export const SinglePost = ({ post }) => {
     }
 
 
-    return <div className="user-post-container">
+    return <div className="user-post-container" id={mode ? "dark-mode" : ""}>
         <img src={post.profileImg} alt="user" style={{ cursor: "pointer" }} onClick={() => navigate(`/profile/${post.userId}`)} />
         <div>
 

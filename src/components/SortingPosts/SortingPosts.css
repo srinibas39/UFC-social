@@ -1,7 +1,6 @@
 .sorting-posts {
     display: flex;
     padding: 1rem;
-    width: 40rem;
     box-shadow: var(--box-shadow2);
     margin: auto;
     margin-top: 1rem;
@@ -28,4 +27,10 @@
   
   .primary-color{
     color:var(--primary-color)
+  }
+
+  @media (min-width:40rem){
+    .sorting-posts{
+      width: 40rem;
+    }
   }

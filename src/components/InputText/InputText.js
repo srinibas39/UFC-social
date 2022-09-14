@@ -15,6 +15,7 @@ export const InputText = ({ show }) => {
     const { postInput, imgInput, editPost } = useSelector((state) => state.posts);
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
+    const { mode } = useSelector((state) => state.mode)
 
     const inputRef = useRef(null);
     const handleImage = () => {
@@ -62,14 +63,14 @@ export const InputText = ({ show }) => {
 
     return <>
         {
-            <div className="input-text-container" style={{ height: imageData && "20rem" }} onClick={(e) => e.stopPropagation()} >
+            <div className="input-text-container" style={{ height: imageData && "20rem" }} onClick={(e) => e.stopPropagation()} id={mode ? "dark-mode" : ""} >
                 <div className="input-text">
 
                     <img src={require("../../images/Conor.png")} alt="user" />
 
                     <div className="input-text-text">
                         <div className="input-text-text-div" onMouseEnter={() => setEmoji(false)}>
-                            <input placeholder="Type here to post" value={post} onChange={(e) => setPost(e.target.value)} />
+                            <input placeholder="Type here to post" value={post} onChange={(e) => setPost(e.target.value)} id={mode ? "dark-mode" : ""} />
                             <img src={imageData} alt="user" id="input-img" style={{ display: !imageData && "none" }} />
                             <span className="material-symbols-outlined cross" style={{ display: !imageData && "none" }} onClick={() => (setImageData(""))}>
                                 close
@@ -91,7 +92,7 @@ export const InputText = ({ show }) => {
                                     mood
                                 </span>
                                 {
-                                    emoji && <div className="emoji-box" onMouseLeave={() => setEmoji(false)}>
+                                    emoji && <div className="emoji-box" id={mode ? "dark-mode" : ""} onMouseLeave={() => setEmoji(false)}>
                                         <div>
                                             <p onClick={(e) => setPost(post + "" + e.target.innerText)}>😀</p>
                                             <p onClick={(e) => setPost(post + "" + e.target.innerText)}>😃</p>

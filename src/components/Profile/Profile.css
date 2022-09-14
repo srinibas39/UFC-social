@@ -1,6 +1,5 @@
 .profile-container {
   padding: 1rem;
-  width: 40rem;
   margin: auto;
   box-shadow: var(--box-shadow2);
   margin-top: 1rem;
@@ -73,4 +72,10 @@
 .btn-logout:hover,.btn-unfollow:hover {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+}
+
+@media (min-width:40rem){
+ .profile-container{
+   width: 40rem;
+ }
 }

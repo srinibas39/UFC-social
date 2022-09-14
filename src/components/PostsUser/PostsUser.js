@@ -5,6 +5,7 @@ export const PostsUser = () => {
     
     const { userPosts, sort } = useSelector((state) => state.posts);
     const { bookmarks } = useSelector((state) => state.users);
+   
 
     const getFilteredData = () => {
         if (sort === "POSTS") {

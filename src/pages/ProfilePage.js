@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import { AutoComplete } from "../components/AutoComplete/AutoComplete"
 import { Comments } from "../components/Comments/Comments"
 import { Navbar } from "../components/NavBar/NavBar"
@@ -12,11 +13,12 @@ export const ProfilePage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
-    return <>
+    const {mode}=useSelector((state)=>state.mode)
+    return <div id={mode?"dark-mode":""} style={{minHeight:"100vh",overflow:"hidden"}}>
         <Navbar />
         <AutoComplete />
         <Profile />
         <SortingPosts />
         <PostsUser />
-    </>
+    </div>
 }

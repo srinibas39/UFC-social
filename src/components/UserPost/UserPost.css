@@ -3,7 +3,6 @@
   margin: auto;
   box-shadow: var(--box-shadow2);
   margin-top: 1rem;
-  margin-bottom: 1rem;
   display: flex;
   font-size: 12px;
 }
@@ -56,7 +55,7 @@
 
 @media (min-width:40rem){
   .user-post-container{
-    width:40rem;
+    width:70%;
     font-size: 1rem;
   }
 }

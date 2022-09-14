@@ -1,12 +1,22 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
+import { setMode } from "../../features/modeSlice";
 import "./NavBar.css"
 
 export const Navbar = () => {
     const navigate = useNavigate();
-    const { user } = useSelector((state) => state.auth)
+    const { user } = useSelector((state) => state.auth);
+    const { mode } = useSelector((state) => state.mode);
+    const dispatch = useDispatch()
 
-    return <div className="navBar">
+    const handleMode = () => {
+        dispatch(setMode())
+    }
+
+    
+
+    return <div className="navBar" id={mode?"dark-mode":""}>
         <div className="navBar-img" onClick={() => navigate("/")}>
 
             <svg
@@ -35,11 +45,16 @@ export const Navbar = () => {
                     explore
                 </span>
             </div>
-            <div onClick={() => navigate("#")}>
+            <div onClick={handleMode}>
+                {
+                    mode ? <span className="material-symbols-outlined">
+                        light_mode
+                    </span> :
+                        <span className="material-symbols-outlined">
+                            dark_mode
+                        </span>
+                }
 
-                <span className="material-symbols-outlined">
-                    dark_mode
-                </span>
             </div>
         </div>
     </div>

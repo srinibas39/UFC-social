@@ -5,6 +5,7 @@
   display: flex;
   border-top: 3px solid var(--primary-color);
   font-size: 12px;
+  
 }
 
 .comment img {
@@ -39,5 +40,7 @@
     width:40rem;
     font-size: 1rem;
     margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }

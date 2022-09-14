@@ -11,7 +11,8 @@ export const CommentPage = () => {
 
     const { show, showComment } = useSelector((state) => state.posts);
     const { postId } = useParams();
-    return <>
+    const { mode } = useSelector((state) => state.mode)
+    return <div id={mode ? "dark-mode" : ""} style={{minHeight:"100vh"}}>
         <Navbar />
         <AutoComplete />
         <Comments postId={postId} />
@@ -20,8 +21,5 @@ export const CommentPage = () => {
             showComment && <CommentEdit postId={postId}/>
         }
         
-       
-
-
-    </>
+    </div>
 }

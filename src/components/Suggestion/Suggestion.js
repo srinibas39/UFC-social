@@ -8,6 +8,7 @@ export const Suggestion = () => {
 
     const { users } = useSelector((state) => state.users);
     const { user } = useSelector((state) => state.auth);
+    const { mode } = useSelector((state) => state.mode)
 
 
     useEffect(() => {
@@ -32,7 +33,7 @@ export const Suggestion = () => {
 
     const filterUsers = getFilterUsers(user._id);
 
-    return <div className="suggestion-container">
+    return <div className="suggestion-container" id={mode ? "dark-mode" : ""}>
         {
             filterUsers && filterUsers.map((user) => {
                 return <div className="suggestion" key={user._id}>

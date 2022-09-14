@@ -21,7 +21,7 @@ export const Comments = ({postId}) => {
 
     }, [posts.posts])
 
-    return <div className="comments-container">
+    return <div className="comments-container" style={{overflow:"hidden"}} >
         {
             post && <SinglePost post={post.post} />
         }

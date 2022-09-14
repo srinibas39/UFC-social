@@ -9,6 +9,8 @@ export const CommentText = ({ postId }) => {
     const dispatch = useDispatch();
     const { token } = useSelector((state) => state.auth);
     const { commentEdit, showComment } = useSelector((state) => state.posts);
+    const { mode } = useSelector((state) => state.mode)
+    
 
     const handleComment = () => {
         dispatch(addComment({ postId, commentData: { text, children: [] }, token }));
@@ -23,7 +25,7 @@ export const CommentText = ({ postId }) => {
         dispatch(setCommentEdit({}));
         dispatch(setShowComment(false));
     }
-    return <div className="comment-text-container">
+    return <div className="comment-text-container" id={mode ? "dark-mode" : ""}>
         <div className="input-text">
 
             <img src={require("../../images/Conor.png")} alt="user" />

@@ -13,6 +13,7 @@ export const AutoComplete = () => {
     const [suggestion, setSuggestion] = useState([])
     const { users } = useSelector((state) => state.users);
     const navigate = useNavigate();
+    const { mode } = useSelector((state) => state.mode);
 
 
     useEffect(() => {
@@ -24,7 +25,7 @@ export const AutoComplete = () => {
         setInput(e.target.value);
         setFilteredSuggestion(suggestion.filter((el) => el.name.toLowerCase().indexOf(input.toLowerCase()) > -1));
         setShowSuggestion(true);
-       
+
     }
 
     const handleClick = (e) => {
@@ -32,8 +33,8 @@ export const AutoComplete = () => {
         setFilteredSuggestion([]);
         setShowSuggestion(false);
 
-        const [user]=filteredSuggestion.filter((el)=>el.name===e.target.innerText);
-       
+        const [user] = filteredSuggestion.filter((el) => el.name === e.target.innerText);
+
         navigate(`/profile/${user._id}`)
     }
 
@@ -44,9 +45,9 @@ export const AutoComplete = () => {
                     {
                         filteredSuggestion.map((user, idx) => {
                             return <li key={idx} onClick={handleClick}>
-                                <img src={user.image}/>
+                                <img src={user.image} />
                                 <p>{user.name}</p>
-                                </li>
+                            </li>
                         })
                     }
                 </ul> :
@@ -61,8 +62,8 @@ export const AutoComplete = () => {
 
 
 
-    return <div className="search-con">
-        <input type="search" placeholder={"Type To search"} value={input} onChange={handleChange} />
+    return <div className="search-con" id={mode?"dark-mode":""}>
+        <input type="search" placeholder={"Type To search"} value={input} onChange={handleChange}  id={mode?"dark-mode":""} />
         <span className="material-icons-outlined"> search </span>
         {showSuggestion && input && <SuggestionList />}
     </div>

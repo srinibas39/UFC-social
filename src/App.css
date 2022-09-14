@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  margin: 0px;
+  margin: 0px ;
   padding: 0px;
   font-family:var(--primary-font-family) ;
 }
@@ -29,7 +29,19 @@
 
 ::-webkit-scrollbar-thumb{
   background-color: var(--primary-color);
- 
 }
+
+#dark-mode{
+  color:var(--secondary-color);
+  background-color: var(--footer-color);
+}
+
+.dark-mode-bg{
+  background-color: var(--secondary-color3);
+}
+
+
+
+
 
 

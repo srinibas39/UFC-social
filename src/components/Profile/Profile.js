@@ -17,6 +17,7 @@ export const Profile = () => {
     const { userPosts } = useSelector((state) => state.posts)
 
     const { userId } = useParams();
+    const { mode } = useSelector((state) => state.mode)
 
     useEffect(() => {
         dispatch(getSingleUser(userId));
@@ -45,7 +46,7 @@ export const Profile = () => {
 
     return <>
         {
-            userId === auth.user._id ? <div className="profile-container">
+            userId === auth.user._id ? <div className="profile-container" id={mode ? "dark-mode" : ""}>
                 <img src={user.image} alt="user" />
                 <h2>{user.firstName + " " + user.lastName}</h2>
                 <small>@{user.firstName}</small>

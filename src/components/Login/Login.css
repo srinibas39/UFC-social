@@ -25,6 +25,7 @@
 .email-container input {
   height: 30px;
   padding: 10px;
+  outline:none;
 }
 .password-container {
   display: flex;
@@ -33,6 +34,7 @@
 .password-container input {
   height: 30px;
   padding: 10px;
+  outline: none;
 }
 .forgotP-container {
   display: flex;

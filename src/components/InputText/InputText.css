@@ -29,9 +29,9 @@
 .input-text-text input {
   height: 20%;
   padding: 1rem;
-  width: 100%;
   outline: none;
   border: none;
+  width: 100%;
 }
 
 .input-text-option {
@@ -121,5 +121,8 @@
   .input-text-container{
     height: 12rem;
     width:40rem
+  }
+  .input-text-text input {
+    width:80%
   }
 }

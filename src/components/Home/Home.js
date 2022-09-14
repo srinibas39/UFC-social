@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom"
 import "./Home.css";
 import HomeSvg from "../../images/Home.svg";
+import { useSelector } from "react-redux";
 
 
 export const Home = () => {
     const navigate = useNavigate();
-    return <div className="home-container">
-        <div className="home">
+    const { mode } = useSelector((state) => state.mode)
+    return <div className="home-container" id={mode ? "dark-mode" : ""}>
+        <div className="home" id={mode ? "dark-mode" : ""}>
             <h1>UFC <span>SOCIAL</span></h1>
             <div className="home-logo-text">
                 <div>

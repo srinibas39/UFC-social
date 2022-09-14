@@ -10,6 +10,7 @@ export const EditProfile = ({ show, setShow }) => {
   });
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
+  const { mode } = useSelector((state) => state.mode)
 
   const handleUpdate = () => {
     dispatch(editUser({ token, userData }));
@@ -19,8 +20,8 @@ export const EditProfile = ({ show, setShow }) => {
   return (
     <>
       {show && (
-        <div className="edit-profile-container" onClick={() => setShow(false)}>
-          <div className="edit-profile" onClick={(e) => e.stopPropagation()}>
+        <div className="edit-profile-container"  onClick={() => setShow(false)}>
+          <div className="edit-profile" id={mode ? "dark-mode" : ""} onClick={(e) => e.stopPropagation()}>
             <span
               className="material-symbols-outlined"
               onClick={() => setShow(false)}

@@ -12,9 +12,10 @@ export const SortingPosts = () => {
     });
     const auth = useSelector((state) => state.auth);
     const { user } = useSelector((state) => state.users);
+    const { mode } = useSelector((state) => state.mode)
    
 
-    return <div className="sorting-posts">
+    return <div className="sorting-posts" id={mode ? "dark-mode" : ""}>
         {
             auth.user._id===user._id? <h3 className={ciickedCategory.trend ? "primary-color" : ""} onClick={(e) => (dispatch(setSort(e.target.innerText.split("\n")[1])), setclickedCategory({ ...ciickedCategory, trend: true, recent: false }))}><span className="material-symbols-outlined">
                 bookmarks
