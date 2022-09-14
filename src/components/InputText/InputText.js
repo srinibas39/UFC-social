@@ -59,9 +59,12 @@ export const InputText = ({ show }) => {
 
 
     useEffect(() => {
-        show && setPost(postInput)
         setImageData(imgInput)
-    }, [postInput, imgInput])
+    }, [imgInput])
+
+    useEffect(() => {
+        show && setPost(postInput)
+    }, [postInput])
 
     return <>
         {

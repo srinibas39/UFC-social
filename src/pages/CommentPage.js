@@ -20,6 +20,7 @@ export const CommentPage = () => {
         {
             showComment && <CommentEdit postId={postId}/>
         }
+        <div className="blank"></div>
         
     </div>
 }

@@ -10,5 +10,6 @@ export const LoginPage = () => {
         <Navbar />
         <AutoComplete />
         <Login/>
+        <div className="blank"></div>
     </div>
 }

@@ -27,6 +27,7 @@ export const ExplorePage = () => {
         <Categories />
         <UserPost />
         <InputTextModal show={show} />
+        <div className="blank"></div>
 
     </div>
 }

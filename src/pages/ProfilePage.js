@@ -20,5 +20,6 @@ export const ProfilePage = () => {
         <Profile />
         <SortingPosts />
         <PostsUser />
+        <div className="blank"></div>
     </div>
 }

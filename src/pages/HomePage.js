@@ -10,5 +10,6 @@ export const HomePage = () => {
         <Navbar />
         <AutoComplete />
         <Home />
+        <div className="blank"></div>
     </div>
 }
