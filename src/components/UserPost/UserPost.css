@@ -31,7 +31,7 @@
   cursor: pointer;
 }
 
-.user-post-container div > div:hover {
+.user-tools span:hover {
   color: var(--primary-color2);
 }
 

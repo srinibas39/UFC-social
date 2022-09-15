@@ -50,7 +50,7 @@ export const SinglePost = ({ post }) => {
 
                 post.image && <img src={post.image} alt="user" id="post-img" />
             }
-            <div>
+            <div className="user-tools">
                 {
                     post.likes.likedBy.some((el) => el._id === user._id) ? <span className="material-symbols-rounded likecount-pos" onClick={() => (handleToast("Post Liked"), setTimeout(() => dispatch(loadLike({ token, id: post._id })), 1000))}  >
                         thumb_up <span className="likecount">{post.likes.likeCount}</span>

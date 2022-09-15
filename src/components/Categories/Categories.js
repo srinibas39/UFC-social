@@ -7,7 +7,7 @@ export const Categories = () => {
     const dispatch = useDispatch();
     const [ciickedCategory, setclickedCategory] = useState({
         trend: false,
-        recent: false
+        recent: true
     });
     const { mode } = useSelector((state) => state.mode)
 
