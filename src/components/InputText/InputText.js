@@ -5,6 +5,7 @@ import { editPost, loadEditPost, loadPosts, setEditPost, setImgInput, setPostInp
 import "./InputText.css";
 import Conor from "../../images/Conor.png"
 import { useNavigate } from "react-router-dom";
+import { handleToast, handleToastWarning } from "../../utils/toastUtils";
 
 
 export const InputText = ({ show }) => {
@@ -31,30 +32,36 @@ export const InputText = ({ show }) => {
 
     const handlePost = () => {
 
-        if (editPost) {
-            dispatch(loadEditPost({ postData: { ...editPost, content: post, image: imgInput }, token }));
-            dispatch(setEditPost(null));
-            dispatch(setShow(false));
-            dispatch(setImgInput(""))
+        if (post.trim().length) {
+            editPost ? handleToast("Post Updated") : handleToast("Message Posted")
+            setTimeout(() => {
+                if (editPost) {
+                    dispatch(loadEditPost({ postData: { ...editPost, content: post, image: imgInput }, token }));
+                    dispatch(setEditPost(null));
+                    dispatch(setShow(false));
+                    dispatch(setImgInput(""))
+                }
+                else {
+                    if (post !== "" || imageData !== "") {
+                        dispatch(loadPosts({
+                            token: token, postData: {
+                                content: post,
+                                image: imageData,
+                                comments: [],
+                                userId: user._id,
+                                profileImg: Conor
+                            }
+                        }))
+                        setImageData("");
+                        setEmoji("");
+                        setPost("");
+                    }
+                }
+            }, 1000)
         }
         else {
-            if (post !== "" || imageData !== "") {
-                dispatch(loadPosts({
-                    token: token, postData: {
-                        content: post,
-                        image: imageData,
-                        comments: [],
-                        userId: user._id,
-                        profileImg: Conor
-                    }
-                }))
-                setImageData("");
-                setEmoji("");
-                setPost("");
-            }
+            handleToastWarning("Post Field cannot be empty")
         }
-
-
     }
 
 

@@ -5,6 +5,8 @@ import { CommentEdit } from "../components/CommentEdit/CommentEdit"
 import { Comments } from "../components/Comments/Comments"
 import { InputTextModal } from "../components/InputTextModal/InputTextModal"
 import { Navbar } from "../components/NavBar/NavBar"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 
 export const CommentPage = () => {
@@ -12,15 +14,16 @@ export const CommentPage = () => {
     const { show, showComment } = useSelector((state) => state.posts);
     const { postId } = useParams();
     const { mode } = useSelector((state) => state.mode)
-    return <div id={mode ? "dark-mode" : ""} style={{minHeight:"100vh"}}>
+    return <div id={mode ? "dark-mode" : ""} style={{ minHeight: "100vh" }}>
         <Navbar />
         <AutoComplete />
         <Comments postId={postId} />
         <InputTextModal show={show} />
         {
-            showComment && <CommentEdit postId={postId}/>
+            showComment && <CommentEdit postId={postId} />
         }
         <div className="blank"></div>
-        
+        <ToastContainer />
+
     </div>
 }

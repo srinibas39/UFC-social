@@ -1,6 +1,7 @@
 
 import { useSelector, useDispatch } from "react-redux"
 import { deleteComment, editComment, setCommentEdit, setReplyEdit, setShowComment, setShowReplyEdit } from "../../features/postsSlice";
+import { handleToast } from "../../utils/toastUtils";
 import { Reply } from "../Reply/Reply"
 import "./Comment.css"
 
@@ -21,14 +22,18 @@ export const Comment = ({ comment, postId }) => {
     }
 
     const handleDelete = () => {
-        dispatch(deleteComment({ token, postId, commentId: comment._id }))
+        handleToast("Comment Deleted");
+        setTimeout(() => dispatch(deleteComment({ token, postId, commentId: comment._id })), 1000);
     }
 
     const handleReplyDelete = (com) => {
+        handleToast("Reply deleted");
+        setTimeout(() => {
+            const commentChildren = comment.children;
+            const newChildren = commentChildren.filter((el) => el._id !== com._id);
+            dispatch(editComment({ postId, commentId: comment._id, commentData: { children: newChildren }, token }));
+        }, 1000)
 
-        const commentChildren = comment.children;
-        const newChildren=commentChildren.filter((el)=>el._id!==com._id);
-        dispatch(editComment({ postId, commentId: comment._id, commentData: { children: newChildren }, token }));
 
     }
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { AutoComplete } from "../components/AutoComplete/AutoComplete"
-import { Comments } from "../components/Comments/Comments"
 import { Navbar } from "../components/NavBar/NavBar"
 import { PostsUser } from "../components/PostsUser/PostsUser"
 import { Profile } from "../components/Profile/Profile"
 import { SortingPosts } from "../components/SortingPosts/SortingPosts"
-import { UserPost } from "../components/UserPost/UserPost"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export const ProfilePage = () => {
@@ -21,5 +21,6 @@ export const ProfilePage = () => {
         <SortingPosts />
         <PostsUser />
         <div className="blank"></div>
+        <ToastContainer/>
     </div>
 }

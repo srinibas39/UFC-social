@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { follow, getAllUsers, unfollowUser } from "../../features/UserSlice";
+import { handleToast } from "../../utils/toastUtils";
 import "./Suggestion.css"
 
 export const Suggestion = () => {
@@ -17,14 +18,22 @@ export const Suggestion = () => {
 
     const { token } = useSelector((state) => state.auth);
 
-    const handleFollow = (userId) => {
-        dispatch(follow({ token, userId }));
-        dispatch(getAllUsers())
+    const handleFollow = (user) => {
+        handleToast(`${user.username} followed `)
+        setTimeout(() => {
+            dispatch(follow({ token, userId: user._id }));
+            dispatch(getAllUsers())
+        }, 1000)
+
 
     }
-    const handleUnfollow = (userId) => {
-        dispatch(unfollowUser({ token, userId }));
-        dispatch(getAllUsers())
+    const handleUnfollow = (user) => {
+        handleToast(`${user.username} followed `)
+        setTimeout(() => {
+            dispatch(unfollowUser({ token, user:user._id }));
+            dispatch(getAllUsers())
+        }, 1000)
+
     }
 
     const getFilterUsers = (userId) => {
@@ -41,8 +50,8 @@ export const Suggestion = () => {
 
                     {
 
-                        user.followers && user.followers.length ? <button onClick={() => handleUnfollow(user._id)}>UNFOLLOW</button> :
-                            <button onClick={() => handleFollow(user._id)}>FOLLOW</button>
+                        user.followers && user.followers.length ? <button onClick={() => handleUnfollow(user)}>UNFOLLOW</button> :
+                            <button onClick={() => handleFollow(user)}>FOLLOW</button>
                     }
                 </div>
             })

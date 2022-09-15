@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { deletePost, dislikePosts, loadDislike, loadLike, setEditPost, setImgInput, setPostInput, setShow } from "../../features/postsSlice"
 import { addBookmark, removeBookmark, setBookmarks, setUnbookmark } from "../../features/UserSlice";
+import { handleToast } from "../../utils/toastUtils";
 import "./SinglePost.css"
 
 
@@ -26,11 +27,15 @@ export const SinglePost = ({ post }) => {
     }
 
     const handleBookmark = (post) => {
-        dispatch(setBookmarks(post))
+        handleToast("Post Bookmarked");
+        setTimeout(() => dispatch(setBookmarks(post)), 1000)
+
     }
 
     const handleUnbookmark = (post) => {
-        dispatch(setUnbookmark(post))
+        handleToast("Post UnBookmarked")
+        setTimeout(()=>dispatch(setUnbookmark(post)),1000)
+        
     }
 
 
@@ -47,20 +52,20 @@ export const SinglePost = ({ post }) => {
             }
             <div>
                 {
-                    post.likes.likedBy.some((el) => el._id === user._id) ? <span className="material-symbols-rounded likecount-pos" onClick={() => (dispatch(loadLike({ token, id: post._id })))}  >
+                    post.likes.likedBy.some((el) => el._id === user._id) ? <span className="material-symbols-rounded likecount-pos" onClick={() => (handleToast("Post Liked"), setTimeout(() => dispatch(loadLike({ token, id: post._id })), 1000))}  >
                         thumb_up <span className="likecount">{post.likes.likeCount}</span>
                     </span> :
-                        <span className="material-symbols-outlined likecount-pos" onClick={() => (dispatch(loadLike({ token, id: post._id })))}>
+                        <span className="material-symbols-outlined likecount-pos" onClick={() => (handleToast("Post Liked"), setTimeout(() => dispatch(loadLike({ token, id: post._id })), 1000))}>
                             thumb_up {post.likes.likeCount > 0 && <span className="likecount">{post.likes.likeCount}</span>}
                         </span>
 
                 }
                 {
                     post.likes.dislikedBy.some((el) => el._id === user._id) ? <span className="material-symbols-rounded"
-                        onClick={() => dispatch(loadDislike({ token, id: post._id }))}>thumb_down</span>
+                        onClick={() => (handleToast("Post Disliked"), setTimeout(() => dispatch(loadDislike({ token, id: post._id })), 1000))}>thumb_down</span>
                         :
                         <span className="material-symbols-outlined"
-                            onClick={() => dispatch(loadDislike({ token, id: post._id }))} >thumb_down</span>
+                            onClick={() => (handleToast("Post Disliked"), setTimeout(() => dispatch(loadDislike({ token, id: post._id })), 1000))} >thumb_down</span>
 
 
                 }

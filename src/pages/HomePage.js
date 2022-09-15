@@ -2,6 +2,8 @@ import { useSelector } from "react-redux"
 import { AutoComplete } from "../components/AutoComplete/AutoComplete"
 import { Home } from "../components/Home/Home"
 import { Navbar } from "../components/NavBar/NavBar"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export const HomePage = () => {
@@ -11,5 +13,6 @@ export const HomePage = () => {
         <AutoComplete />
         <Home />
         <div className="blank"></div>
+        <ToastContainer/>
     </div>
 }

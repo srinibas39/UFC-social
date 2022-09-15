@@ -8,6 +8,8 @@ import { InputTextModal } from "../components/InputTextModal/InputTextModal"
 import { Navbar } from "../components/NavBar/NavBar"
 import { Suggestion } from "../components/Suggestion/Suggestion"
 import { UserPost } from "../components/UserPost/UserPost"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -28,6 +30,7 @@ export const ExplorePage = () => {
         <UserPost />
         <InputTextModal show={show} />
         <div className="blank"></div>
+        <ToastContainer/>
 
     </div>
 }

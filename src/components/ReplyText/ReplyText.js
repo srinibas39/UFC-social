@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editComment, setReplyEdit, setShowReplyEdit } from "../../features/postsSlice";
 import { v4 as uuid } from "uuid";
 import "./ReplyText.css"
+import { handleToast, handleToastWarning } from "../../utils/toastUtils";
 export const ReplyText = ({ setReply, postId, comment }) => {
     const [replyText, setReplyText] = useState("");
     const dispatch = useDispatch();
@@ -11,34 +12,50 @@ export const ReplyText = ({ setReply, postId, comment }) => {
 
 
     const handleReply = () => {
-        let commentReply = comments.comments
-        for (let i = 0; i < commentReply.length; i++) {
-            if (commentReply[i]._id === comment._id) {
-                const commentChild = [...commentReply[i].children, { ...commentReply[i], text: replyText, username: user.username, _id: uuid() }];
-                dispatch(editComment({ postId, commentId: comment._id, commentData: { children: commentChild }, token }));
+        if (replyText.trim().length) {
+            handleToast("Reply Posted");
+            setTimeout(() => {
+                let commentReply = comments.comments
+                for (let i = 0; i < commentReply.length; i++) {
+                    if (commentReply[i]._id === comment._id) {
+                        const commentChild = [...commentReply[i].children, { ...commentReply[i], text: replyText, username: user.username, _id: uuid() }];
+                        dispatch(editComment({ postId, commentId: comment._id, commentData: { children: commentChild }, token }));
 
-            }
+                    }
 
+                }
+
+                setReplyText("");
+                setReply(false);
+            }, 1000)
         }
-
-        setReplyText("");
-        setReply(false);
+        else {
+            handleToastWarning("Reply field cannot be empty");
+        }
     }
 
     const handleReplyEdit = () => {
-        let allCommentChildren = comment.children;
-        const newChildren = [];
-        for (let i = 0; i < allCommentChildren.length; i++) {
-            if (allCommentChildren[i]._id === replyEdit._id) {
-                newChildren.push({ ...replyEdit, text: replyText })
-            }
-            else {
-                newChildren.push(allCommentChildren[i])
-            }
+        if (replyText.trim().length) {
+            handleToast("Reply Edited");
+            setTimeout(() => {
+                let allCommentChildren = comment.children;
+                const newChildren = [];
+                for (let i = 0; i < allCommentChildren.length; i++) {
+                    if (allCommentChildren[i]._id === replyEdit._id) {
+                        newChildren.push({ ...replyEdit, text: replyText })
+                    }
+                    else {
+                        newChildren.push(allCommentChildren[i])
+                    }
+                }
+                dispatch(editComment({ postId, commentId: comment._id, commentData: { children: newChildren }, token }));
+                dispatch(setShowReplyEdit(false));
+                dispatch(setReplyEdit({}))
+            }, 1000)
         }
-        dispatch(editComment({ postId, commentId: comment._id, commentData: { children: newChildren }, token }));
-        dispatch(setShowReplyEdit(false));
-        dispatch(setReplyEdit({}))
+        else {
+            handleToastWarning("Reply field cannot be empty")
+        }
 
 
     }
